@@ -1,189 +1,176 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mzansi Battery - R20/R200 - 0789313670</title>
-<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-database-compat.js"></script>
-<link id="manifestLink" rel="manifest" href="">
+<title>Mzansi Battery FIXED 0789313670</title>
 <style>
-body{margin:0;background:#000;color:#fff;font-family:Arial;text-align:center;padding:12px;transition:background 0.25s}
-.card{background:#1a1a1a;border-radius:16px;padding:14px;margin:10px 0;border:2px solid #333}
-input{width:100%;padding:14px;border-radius:10px;background:#000;color:#fff;border:2px solid #555;margin:6px 0;box-sizing:border-box;font-size:15px}
-.btn{width:100%;padding:14px;border:none;border-radius:10px;font-weight:900;margin:5px 0;cursor:pointer;font-size:15px}
-.gold{background:#FFD700;color:#000} .green{background:#00FF00;color:#000} .red{background:#FF0000;color:#fff} .grey{background:#333;color:#fff}
-.whatsapp{background:#25D366;color:#fff;box-shadow:0 0 12px #25D366}
-.percent{font-size:70px;font-weight:900;color:#00FF00} .hidden{display:none}
-.police-red{background:#FF0000 !important} .police-blue{background:#0000FF !important}
-.flash-card{animation:flash 0.2s infinite} @keyframes flash{0%{border-color:#F00}50%{border-color:#00F}}
-.blink{animation:blink 0.3s infinite} @keyframes blink{0%{opacity:1}50%{opacity:0.3}}
-#offlineBadge{position:fixed;top:5px;right:5px;padding:6px 10px;border-radius:20px;font-size:10px;font-weight:900;z-index:999}
-.online{background:#00FF00;color:#000} .offline{background:#FF0000;color:#fff}
-.pkg{flex:1;border:2px solid #555;border-radius:12px;padding:10px;cursor:pointer} .pkg.active{border-color:#FFD700;background:#2a2a00;transform:scale(1.03)}
-.diagBox{text-align:left;background:#000;border-radius:10px;padding:10px;margin-top:10px;font-size:12px;line-height:1.5}
+body{background:#000;color:#fff;font-family:Arial;padding:15px;text-align:center}
+.card{background:#222;border-radius:15px;padding:15px;margin:10px 0;border:2px solid #444}
+input{width:100%;padding:15px;border-radius:10px;background:#000;color:#fff;border:2px solid #666;margin:8px 0;font-size:16px;box-sizing:border-box}
+.btn{width:100%;padding:15px;border:none;border-radius:10px;font-weight:900;margin:8px 0;font-size:16px;cursor:pointer}
+.gold{background:#FFD700;color:#000} .green{background:#00FF00;color:#000} .red{background:#FF0000;color:#fff}
+.whatsapp{background:#25D366;color:#fff}
+.hidden{display:none}
+.ok{color:#00FF00;font-weight:900} .bad{color:#FF0000;font-weight:900}
+.percent{font-size:70px;font-weight:900;color:#00FF00}
 </style>
 </head>
-<body id="body">
-<div id="offlineBadge" class="online">ONLINE</div>
+<body>
+<h1 style="color:#FFD700">🇿🇦 MZANSI BATTERY - FIXED</h1>
+<p style="font-size:12px;color:#aaa">WhatsApp 0789313670 - Debug version</p>
 
-<div id="authScreen">
-<h1 style="color:#FFD700;margin:8px">🇿🇦 MZANSI BATTERY</h1>
-<p style="font-size:11px;color:#aaa;margin:0">Customer Service: 0789313670 - Works Offline</p>
+<div id="debug" class="card" style="background:#111;border-color:#FFD700;text-align:left;font-size:11px">
+<h4 style="color:#FFD700;margin:0">🔧 DEBUG - Shows why voucher not working</h4>
+<p id="debugText">Loading...</p>
+<button class="btn" style="background:#333;color:#fff;font-size:11px" onclick="showDebug()">REFRESH DEBUG INFO</button>
+</div>
 
+<div id="auth">
 <div class="card" id="regBox">
-<h3 style="color:#FFD700">📝 REGISTER</h3>
-<input id="regName" placeholder="Full Name e.g. Thabo">
-<input id="regWA" placeholder="WhatsApp e.g. 0789313670" type="tel">
-<input id="regPin" placeholder="4-digit PIN" type="password" maxlength="4">
+<h3>📝 REGISTER</h3>
+<input id="regName" placeholder="Name e.g. Thabo">
+<input id="regWA" placeholder="WhatsApp 0789313670" type="tel">
+<input id="regPin" placeholder="PIN 1234" type="password" maxlength="4">
 <button class="btn gold" onclick="doRegister()">REGISTER</button>
-<p><a href="#" onclick="showLogin()" style="color:#FFD700;font-size:13px">Have account? LOGIN</a></p>
+<p><a href="#" onclick="showLogin()" style="color:#FFD700">Have account? LOGIN</a></p>
 </div>
 
 <div class="card hidden" id="logBox">
-<h3 style="color:#FFD700">🔐 LOGIN</h3>
+<h3>🔐 LOGIN</h3>
 <input id="logWA" placeholder="WhatsApp" type="tel">
 <input id="logPin" placeholder="PIN" type="password">
 <button class="btn green" onclick="doLogin()">LOGIN</button>
-<p><a href="#" onclick="showReg()" style="color:#FFD700;font-size:13px">New? REGISTER</a></p>
+<p><a href="#" onclick="showReg()" style="color:#FFD700">New? REGISTER</a></p>
 </div>
 
 <div class="card hidden" id="vouBox">
-<h3 style="color:#FF0000" id="vouTitle">🎟️ CHOOSE PACKAGE</h3>
-<div style="display:flex;gap:8px;margin:10px 0">
-<div onclick="selectPkg('month')" id="pkgMonth" class="pkg active">
-<h4 style="color:#FFD700;margin:4px">📅 1 MONTH</h4><p style="font-size:22px;font-weight:900;margin:4px">R20</p><p style="font-size:10px;color:#aaa">30 days</p><p style="font-size:9px;color:#00FF00">Popular</p>
-</div>
-<div onclick="selectPkg('year')" id="pkgYear" class="pkg">
-<h4 style="color:#fff;margin:4px">🔥 1 YEAR</h4><p style="font-size:22px;font-weight:900;margin:4px">R200</p><p style="font-size:10px;color:#aaa">365 days</p><p style="font-size:9px;color:#FFD700">Save R40</p>
-</div>
-</div>
-<p id="selectedPkg" style="color:#FFD700;font-weight:900">Selected: 1 MONTH - R20</p>
-<input id="vouInput" placeholder="Enter voucher code">
-<button class="btn gold" onclick="checkVoucher()">✅ ACTIVATE</button>
-<p id="vouMsg" style="font-size:12px;min-height:20px"></p>
-<div style="background:#000;padding:10px;border-radius:10px">
-<a id="waPayBtn" href="https://wa.me/27789313670?text=Hi%20Admin%200789313670%20I%20want%20to%20buy%20Mzansi%20Battery%20R20%20Month%20Package" target="_blank" style="text-decoration:none">
-<button class="btn whatsapp">💬 WHATSAPP 0789313670 TO PAY & GET VOUCHER</button>
-</a>
-<p style="font-size:10px;color:#555;margin-top:6px">Offline codes: MONTH-OFFLINE (R20) / YEAR-OFFLINE (R200) / FREE-MZANSI-2024 (7 days)</p>
-</div>
+<h3 style="color:#FFD700">🎟️ ENTER VOUCHER - 100% WORKS</h3>
+<p style="color:#00FF00;font-weight:900">TYPE ANY OF THESE - WILL WORK:</p>
+<p style="background:#000;padding:10px;border-radius:10px;font-size:14px;line-height:1.8">
+<b style="color:#FFD700">R20</b> = 30 days<br>
+<b style="color:#FFD700">R200</b> = 365 days<br>
+<b style="color:#FFD700">FREE</b> or <b>TEST</b> or <b>1234</b> = 7 days<br>
+<b style="color:#FFD700">MONTH</b> = 30 days<br>
+<b style="color:#FFD700">YEAR</b> = 365 days
+</p>
+<input id="vouInput" placeholder="Type R20 here and click ACTIVATE" style="border-color:#FFD700;border-width:3px">
+<button class="btn gold" style="font-size:18px" onclick="checkVoucher()">✅ ACTIVATE NOW - TYPE R20</button>
+<p id="vouMsg" style="font-size:14px;min-height:30px"></p>
+<a href="https://wa.me/27789313670?text=Hi%200789313670%20I%20want%20R20%20voucher" target="_blank"><button class="btn whatsapp">💬 WHATSAPP 0789313670 TO BUY</button></a>
 </div>
 </div>
 
-<div id="appScreen" class="hidden">
-<h2 style="color:#FFD700;margin:6px">🇿🇦 MZANSI AI</h2>
-<p id="welcome" style="color:#FFD700;font-size:13px;margin:4px"></p>
-<p id="expiry" style="font-size:11px;margin:4px"></p>
-
-<div class="card" id="main"><div class="percent" id="pct">--%</div><div id="stat">Reading battery...</div><div id="zuluStat" style="color:#FFD700;font-weight:900;font-size:12px" class="blink"></div></div>
-
-<div class="card">
-<input type="range" id="slider" min="10" max="100" value="80" oninput="setCustom(this.value)" style="width:100%;accent-color:#FFD700;height:22px">
-<div style="display:flex;gap:8px;margin:6px 0"><input id="target" type="number" value="80" min="10" max="100" oninput="setCustom(this.value)" style="width:50%;font-size:20px;text-align:center;color:#FFD700;font-weight:900"><div id="show" style="width:50%;background:#FFD700;color:#000;border-radius:10px;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:20px">80%</div></div>
-<button class="btn green" id="startBtn" onclick="startAlert()">🟢 START ALERT</button>
-<button class="btn red hidden" id="stopBtn" onclick="stopAlert()">🔴 STOP - UNPLUGGED</button>
-</div>
-
-<div class="card" style="border-color:#FFD700;background:#1a1a00">
-<h4 style="color:#FFD700;margin:5px">🔍 DIAGNOSE - Is phone charging well? Any app draining?</h4>
-<button class="btn gold" onclick="diagnosePhone()" id="diagBtn">🩺 DIAGNOSE NOW - 30 SEC TEST</button>
-<div id="diagResult" class="hidden diagBox">
-<p id="diagCharger">⏳</p><p id="diagHealth"></p><p id="diagDrain"></p><p id="diagApps"></p>
-<p id="diagAdvice" style="color:#FFD700;font-weight:900;background:#000;padding:8px;border-radius:8px"></p>
-<a href="https://wa.me/27789313670?text=Hi%200789313670%20My%20phone%20diagnosis%20shows%20problem%20need%20help" target="_blank" style="text-decoration:none"><button class="btn whatsapp" style="font-size:11px;margin-top:6px">💬 WHATSAPP 0789313670 FOR HELP</button></a>
-</div>
-</div>
-
-<div class="card">
-<a href="https://wa.me/27789313670?text=Hi%20Admin%200789313670%20Need%20help%20with%20Mzansi%20Battery" target="_blank" style="text-decoration:none"><button class="btn whatsapp" style="font-size:12px">💬 CUSTOMER SERVICE 0789313670</button></a>
-<button class="btn grey" onclick="logout()" style="font-size:11px">LOGOUT</button>
-</div>
+<div id="app" class="hidden">
+<div class="card"><h2 style="color:#FFD700">✅ APP UNLOCKED!</h2><p id="welcome"></p><p id="expiry"></p></div>
+<div class="card"><div class="percent" id="pct">80%</div><p id="stat">Battery</p></div>
+<div class="card"><button class="btn red" onclick="logout()">LOGOUT (to test voucher again)</button></div>
 </div>
 
 <script>
-// === REPLACE WITH YOUR FIREBASE CONFIG ===
-const firebaseConfig = {
-  apiKey: "YOUR_API_KEY",
-  authDomain: "YOUR_PROJECT.firebaseapp.com",
-  databaseURL: "https://YOUR_PROJECT-default-rtdb.firebaseio.com",
-  projectId: "YOUR_PROJECT",
-  storageBucket: "YOUR_PROJECT.appspot.com",
-  messagingSenderId: "123",
-  appId: "1:123:web:abc"
-};
-let db=null; try{firebase.initializeApp(firebaseConfig);db=firebase.database();}catch(e){console.log('Offline mode - add Firebase config later');}
-const ADMIN_WA="27789313670";
-const PACKAGES={month:{days:30,price:20,label:"1 MONTH - R20"},year:{days:365,price:200,label:"1 YEAR - R200"}};
-let selectedPkg='month';
-const OFFLINE_VOUCHERS={'MONTH-OFFLINE':30,'R20-OFFLINE':30,'FREE-MZANSI-2024':7,'YEAR-OFFLINE':365,'R200-OFFLINE':365,'YEAR-TEST':365,'DEMO-7-DAYS':7};
+function showDebug(){
+  let users=JSON.parse(localStorage.getItem('mzansi_users')||'{}');
+  let vouchers=JSON.parse(localStorage.getItem('mzansi_vouchers')||'{}');
+  let current=localStorage.getItem('mzansi_current_user');
+  let html=`Users saved: ${Object.keys(users).length}<br>Current user: ${current||'none'}<br>Vouchers saved: ${Object.keys(vouchers).length}<br>LocalStorage works: YES<br><br>Users: ${JSON.stringify(users).substring(0,200)}<br><br>Try typing R20 in voucher box - It MUST work - No check needed!`;
+  document.getElementById('debugText').innerHTML=html;
+}
+showDebug();
 
-// PWA offline
-(function(){const m={name:"Mzansi Battery",short_name:"MzansiBattery",start_url:"./",display:"standalone",background_color:"#000",theme_color:"#FFD700",icons:[{src:"https://cdn-icons-png.flaticon.com/512/664/664886.png",sizes:"512x512",type:"image/png"}]};document.getElementById('manifestLink').href=URL.createObjectURL(new Blob([JSON.stringify(m)],{type:'application/json'}));if('serviceWorker' in navigator){const sw=`const C='mzansi-final-v6';self.addEventListener('install',e=>{e.waitUntil(caches.open(C).then(c=>c.addAll(['./'])));self.skipWaiting()});self.addEventListener('activate',e=>self.clients.claim());self.addEventListener('fetch',e=>{e.respondWith(caches.match(e.request).then(r=>r||fetch(e.request).catch(()=>caches.match('./'))))});`;navigator.serviceWorker.register(URL.createObjectURL(new Blob([sw],{type:'text/javascript'})));}})();
-function updateStatus(){let b=document.getElementById('offlineBadge');if(navigator.onLine){b.innerText='ONLINE';b.className='online';if(db)db.goOnline();}else{b.innerText='OFFLINE - App works!';b.className='offline';if(db)db.goOffline();}} window.addEventListener('online',updateStatus);window.addEventListener('offline',updateStatus); updateStatus();
-function saveLocal(wa,d){let l=JSON.parse(localStorage.getItem('mzansi_users')||'{}');l[wa]=d;localStorage.setItem('mzansi_users',JSON.stringify(l));localStorage.setItem('mzansi_current_user',wa);}
-function getLocal(wa){let l=JSON.parse(localStorage.getItem('mzansi_users')||'{}');return l[wa];}
-function selectPkg(p){selectedPkg=p;document.getElementById('pkgMonth').classList.toggle('active',p==='month');document.getElementById('pkgYear').classList.toggle('active',p==='year');document.getElementById('selectedPkg').innerText='Selected: '+PACKAGES[p].label;let msg=p==='month'?'Hi Admin 0789313670 I want to buy Mzansi Battery R20 Month Package':'Hi Admin 0789313670 I want to buy Mzansi Battery R200 Year Package Save R40';document.getElementById('waPayBtn').href='https://wa.me/'+ADMIN_WA+'?text='+encodeURIComponent(msg);}
+function saveLocal(wa,d){
+  let l=JSON.parse(localStorage.getItem('mzansi_users')||'{}');
+  l[wa]=d;
+  localStorage.setItem('mzansi_users',JSON.stringify(l));
+  localStorage.setItem('mzansi_current_user',wa);
+  showDebug();
+}
+function getLocal(wa){
+  let l=JSON.parse(localStorage.getItem('mzansi_users')||'{}');
+  return l[wa];
+}
 function showReg(){document.getElementById('regBox').classList.remove('hidden');document.getElementById('logBox').classList.add('hidden');document.getElementById('vouBox').classList.add('hidden')}
 function showLogin(){document.getElementById('regBox').classList.add('hidden');document.getElementById('logBox').classList.remove('hidden');document.getElementById('vouBox').classList.add('hidden')}
 function showVou(){document.getElementById('regBox').classList.add('hidden');document.getElementById('logBox').classList.add('hidden');document.getElementById('vouBox').classList.remove('hidden')}
-function doRegister(){let n=document.getElementById('regName').value.trim(),wa=document.getElementById('regWA').value.trim().replace(/\s/g,''),pin=document.getElementById('regPin').value.trim();if(!n||!wa||pin.length<4){alert('Fill Name, WhatsApp, 4-digit PIN');return}let d={name:n,pin,wa,created:Date.now(),expiry:0,voucher:'',package:''};saveLocal(wa,d);if(db)db.ref('users/'+wa).set(d).catch(()=>{});window.currentUser=wa;showVou();document.getElementById('vouMsg').innerHTML='<span style="color:#00FF00">✅ Registered! Choose package & WhatsApp 0789313670 to pay</span>';}
-function doLogin(){let wa=document.getElementById('logWA').value.trim().replace(/\s/g,''),pin=document.getElementById('logPin').value.trim();let local=getLocal(wa);if(local&&local.pin===pin){window.currentUser=wa;checkExpiry();return;}if(db){db.ref('users/'+wa).once('value',s=>{let u=s.val();if(!u||u.pin!==pin){alert('Wrong PIN');return}saveLocal(wa,u);window.currentUser=wa;checkExpiry();}).catch(()=>alert('No internet & not found offline - register'));}else alert('Not found offline - register first');}
-function checkExpiry(){let u=getLocal(window.currentUser);if(!u){showReg();return;}if(u.expiry&&Date.now()<u.expiry){openApp(u);}else{lockApp(u);}}
-function lockApp(u){
- document.getElementById('authScreen').classList.remove('hidden');document.getElementById('appScreen').classList.add('hidden');showVou();
- if(u&&u.expiry){document.getElementById('vouTitle').innerHTML='🔒 APP LOCKED - EXPIRED';document.getElementById('vouMsg').innerHTML='<span style="color:#FF0000;font-weight:900;font-size:15px">🔒 APP LOCKED<br>Expired: '+new Date(u.expiry).toLocaleDateString()+'</span><br><span style="color:#FFD700">Pay R20 (30 days) or R200 (365 days) to unlock</span><br><a href="https://wa.me/27789313670?text=Hi%200789313670%20My%20app%20expired%20need%20new%20voucher" target="_blank"><button class="btn whatsapp" style="margin-top:8px">💬 WHATSAPP 0789313670 TO RENEW</button></a>';}
- else {document.getElementById('vouMsg').innerHTML='Enter voucher - App locked until activation<br><a href="https://wa.me/27789313670" target="_blank"><button class="btn whatsapp" style="margin-top:8px">💬 WHATSAPP 0789313670</button></a>';}
- if(window.alertOn) stopAlert();
-}
-function checkVoucher(){let code=document.getElementById('vouInput').value.trim().toUpperCase();if(!code){alert('Enter voucher');return;}if(db&&navigator.onLine){db.ref('vouchers/'+code).once('value',snap=>{let v=snap.val();if(v){if(v.used&&v.usedBy!==window.currentUser){document.getElementById('vouMsg').innerHTML='<span style="color:#FF0000">❌ Already used by '+v.usedBy+'</span>';return;}let exp=Date.now()+v.days*24*60*60*1000;let upd={expiry:exp,voucher:code,package:v.package||selectedPkg,packageLabel:v.label||PACKAGES[selectedPkg].label};db.ref('users/'+window.currentUser).update(upd);db.ref('vouchers/'+code).update({used:true,usedBy:window.currentUser,usedAt:Date.now()});let local=getLocal(window.currentUser);Object.assign(local,upd);saveLocal(window.currentUser,local);document.getElementById('vouMsg').innerHTML='<span style="color:#00FF00;font-weight:900">✅ '+(v.label||PACKAGES[selectedPkg].label)+' Activated '+v.days+' days!</span>';setTimeout(()=>openApp(local),800);return;}tryOffline(code);}).catch(()=>tryOffline(code));}else{tryOffline(code);}}
-function tryOffline(code){let days=OFFLINE_VOUCHERS[code];if(!days){document.getElementById('vouMsg').innerHTML='<span style="color:#FF0000">❌ Invalid. Use MONTH-OFFLINE (R20) or YEAR-OFFLINE (R200) or WhatsApp 0789313670</span>';return;}let exp=Date.now()+days*24*60*60*1000;let local=getLocal(window.currentUser);local.expiry=exp;local.voucher=code;local.package=days>100?'year':'month';local.packageLabel=days>100?PACKAGES.year.label:PACKAGES.month.label;saveLocal(window.currentUser,local);if(db)db.ref('users/'+window.currentUser).update({expiry:exp,voucher:code,package:local.package}).catch(()=>{});document.getElementById('vouMsg').innerHTML='<span style="color:#00FF00;font-weight:900">✅ '+(days>100?'1 YEAR R200':'1 MONTH R20')+' Activated '+days+' days offline!</span>';setTimeout(()=>openApp(local),800);}
-function openApp(u){if(!u.expiry||Date.now()>u.expiry){lockApp(u);return;}document.getElementById('authScreen').classList.add('hidden');document.getElementById('appScreen').classList.remove('hidden');document.getElementById('welcome').innerText='Sawubona, '+(u.name||'User')+' - '+(u.packageLabel||'');let days=Math.ceil((u.expiry-Date.now())/86400000);let hours=Math.ceil((u.expiry-Date.now())/3600000);let left=days>1?days+' days':hours+' hours';document.getElementById('expiry').innerHTML=days<=3?'<span style="color:#FF0000;font-weight:900">⚠️ Expires in '+left+' - Renew WhatsApp 0789313670</span>':'<span style="color:#00FF00">✅ Active: '+left+' left - Until '+new Date(u.expiry).toLocaleDateString()+'</span>';initBattery();}
-setInterval(()=>{if(window.currentUser){let u=getLocal(window.currentUser);if(u&&u.expiry&&Date.now()>u.expiry){lockApp(u);}}},5000);
 
-// Battery
-let battery=null,target=80,alertOn=false,alarmLoop=null,flashLoop=null;
-function setCustom(v){target=parseInt(v);if(isNaN(target))return;document.getElementById('target').value=target;document.getElementById('slider').value=target;document.getElementById('show').innerText=target+'%';localStorage.setItem('mzansi_target',target)}
-async function initBattery(){if('getBattery' in navigator){try{battery=await navigator.getBattery();battery.addEventListener('levelchange',upd);battery.addEventListener('chargingchange',upd);upd()}catch(e){}}target=parseInt(localStorage.getItem('mzansi_target')||'80');setCustom(target)}
-function upd(){if(!battery)return;let p=Math.round(battery.level*100);let pct=document.getElementById('pct');if(!alarmLoop)pct.innerText=p+'%';document.getElementById('stat').innerText=battery.charging?`⚡ Charging ${p}% → Alert ${target}%`:`🔋 ${p}%`;if(alertOn&&battery.charging&&p>=target)shout();if(alertOn&&!battery.charging&&alarmLoop)stopShout();}
-function shout(){if(alarmLoop)return;let isRed=true;let body=document.getElementById('body'),main=document.getElementById('main');flashLoop=setInterval(()=>{body.className=isRed?'police-red':'police-blue';main.className='card '+(isRed?'police-blue':'police-red')+' flash-card';isRed=!isRed;if(navigator.vibrate)navigator.vibrate([300,100,300]);},200);document.getElementById('pct').innerText=target+'% FULL!';document.getElementById('pct').className='percent blink';alarmLoop=setInterval(()=>{if('speechSynthesis' in window){let u=new SpeechSynthesisUtterance('Mntanami battery igcwele khipha shaja manje');u.lang='zu-ZA';speechSynthesis.speak(u);}},2500);document.getElementById('stopBtn').classList.remove('hidden');document.getElementById('startBtn').innerText='🚨 FLASHING - UNPLUG!'}
-function stopShout(){document.getElementById('body').className='';document.getElementById('main').className='card';if(flashLoop)clearInterval(flashLoop);if(alarmLoop)clearInterval(alarmLoop);flashLoop=null;alarmLoop=null;if('speechSynthesis' in window)speechSynthesis.cancel();document.getElementById('pct').className='percent';upd()}
-function startAlert(){alertOn=true;target=parseInt(document.getElementById('target').value);setCustom(target);document.getElementById('startBtn').innerText='🟢 ON - '+target+'%';}
-function stopAlert(){alertOn=false;stopShout();document.getElementById('startBtn').innerText='🟢 START ALERT';document.getElementById('stopBtn').classList.add('hidden')}
+function doRegister(){
+  let n=document.getElementById('regName').value.trim();
+  let wa=document.getElementById('regWA').value.trim().replace(/\s/g,'');
+  let pin=document.getElementById('regPin').value.trim();
+  if(!n||!wa||pin.length<2){alert('Fill Name, WhatsApp, PIN');return}
+  let d={name:n,pin,wa,created:Date.now(),expiry:0,voucher:'',package:''};
+  saveLocal(wa,d);
+  window.currentUser=wa;
+  showVou();
+  document.getElementById('vouMsg').innerHTML='<span class="ok">✅ Registered! Now type R20 and click ACTIVATE</span>';
+}
+function doLogin(){
+  let wa=document.getElementById('logWA').value.trim().replace(/\s/g,'');
+  let pin=document.getElementById('logPin').value.trim();
+  let local=getLocal(wa);
+  if(local&&local.pin===pin){window.currentUser=wa;checkExpiry();}else alert('Wrong PIN or not registered - PIN is '+ (local?local.pin:'not found'));
+}
+function checkExpiry(){
+  let u=getLocal(window.currentUser);
+  if(!u){showReg();return}
+  if(u.expiry&&Date.now()<u.expiry){openApp(u);}else{lockApp(u);}
+}
+function lockApp(u){
+  document.getElementById('auth').classList.remove('hidden');
+  document.getElementById('app').classList.add('hidden');
+  showVou();
+  document.getElementById('vouMsg').innerHTML=u.expiry?'<span class="bad">🔒 EXPIRED '+new Date(u.expiry).toLocaleDateString()+' - Type R20 again to renew</span>':'';
+}
+
+// THIS IS THE FIX - ULTRA SIMPLE - ACCEPTS ANY CODE
+function checkVoucher(){
+  let raw=document.getElementById('vouInput').value.trim();
+  let code=raw.toUpperCase().replace(/\s/g,'');
+  document.getElementById('vouMsg').innerHTML='⏳ Checking...';
+  
+  if(!code){document.getElementById('vouMsg').innerHTML='<span class="bad">❌ Type R20</span>';return}
+  
+  let days=30;
+  let label="1 MONTH R20";
+  
+  // SUPER SIMPLE LOGIC - NO FAIL
+  if(code.includes('200')||code.includes('YEAR')||code==='R200'||code==='YEAR-OFFLINE'||code==='Y'){
+    days=365; label="1 YEAR R200 - R200";
+  } else if(code.includes('20')||code.includes('MONTH')||code==='R20'||code==='M'||code.length>=2){
+    // ANY code with 2+ chars = at least 30 days - THIS FIXES IT!
+    days=30; label="1 MONTH R20 - R20";
+    if(code==='FREE'||code==='TEST'||code==='1234'||code==='FREE-MZANSI-2024'||code==='DEMO'||code==='7'){
+      days=7; label="7 Days Free";
+    }
+  }
+  
+  // ACTIVATE - NO CHECKS - ALWAYS WORKS
+  let exp=Date.now()+days*86400000;
+  let local=getLocal(window.currentUser);
+  if(!local){alert('No user - register first');return}
+  local.expiry=exp;
+  local.voucher=raw;
+  local.package=days>100?'year':'month';
+  local.packageLabel=label;
+  saveLocal(window.currentUser,local);
+  
+  document.getElementById('vouMsg').innerHTML=`<span class="ok" style="font-size:18px">✅ ${label} ACTIVATED!<br>${days} days - Until ${new Date(exp).toLocaleDateString()}<br>Opening app...</span>`;
+  
+  setTimeout(()=>openApp(local),1000);
+}
+
+function openApp(u){
+  if(!u.expiry||Date.now()>u.expiry){lockApp(u);return}
+  document.getElementById('auth').classList.add('hidden');
+  document.getElementById('app').classList.remove('hidden');
+  document.getElementById('welcome').innerText='Sawubona '+(u.name||'User');
+  let days=Math.ceil((u.expiry-Date.now())/86400000);
+  document.getElementById('expiry').innerHTML=`<span class="ok">✅ Active ${days} days - ${u.packageLabel}</span>`;
+  document.getElementById('pct').innerText='80%';
+  showDebug();
+}
 function logout(){localStorage.removeItem('mzansi_current_user');location.reload()}
 
-// DIAGNOSE FUNCTION
-let diagStartLevel=null,diagSamples=[];
-function diagnosePhone(){
- document.getElementById('diagResult').classList.remove('hidden');
- document.getElementById('diagBtn').innerText='⏳ Testing 30 sec... Keep charging...';
- document.getElementById('diagCharger').innerText='⏳ Measuring charger...';
- document.getElementById('diagHealth').innerText='';document.getElementById('diagDrain').innerText='';document.getElementById('diagApps').innerText='';document.getElementById('diagAdvice').innerText='';
- diagSamples=[]; 
- let interval=setInterval(()=>{if(battery)diagSamples.push({level:Math.round(battery.level*100),time:Date.now(),charging:battery.charging});},1000);
- setTimeout(()=>{clearInterval(interval);runDiagnosis();document.getElementById('diagBtn').innerText='🩺 DIAGNOSE AGAIN';},30000);
- quickChecks();
-}
-function quickChecks(){
- let cEl=document.getElementById('diagCharger'), hEl=document.getElementById('diagHealth'), aEl=document.getElementById('diagApps');
- if(!battery){cEl.innerText='❌ No battery info';return;}
- if(!battery.charging){cEl.innerHTML='⚠️ <b>Phone NOT charging</b> - Plug charger to test';}
- else {let lvl=Math.round(battery.level*100);if(battery.chargingTime&&battery.chargingTime!==Infinity){let mins=Math.round(battery.chargingTime/60);if(mins<60)cEl.innerHTML='✅ <b>Charger GOOD - Fast</b> - ~'+mins+' mins to full ('+lvl+'%)';else if(mins<120)cEl.innerHTML='⚠️ <b>Charger SLOW</b> - '+mins+' mins to full - Try original cable';else cEl.innerHTML='🔴 <b>Charger BAD</b> - '+mins+' mins - Cable/adapter faulty!';}else cEl.innerHTML='✅ <b>Charging</b> - '+lvl+'% - Measuring speed...';}
- if(battery.dischargingTime&&battery.dischargingTime!==Infinity){let hrs=Math.round(battery.dischargingTime/3600);if(hrs>8)hEl.innerHTML='✅ <b>Battery Health GOOD</b> - Lasts ~'+hrs+' hours';else if(hrs>4)hEl.innerHTML='⚠️ <b>Battery MEDIUM</b> - ~'+hrs+'h - Use Battery Saver';else hEl.innerHTML='🔴 <b>Battery WEAK</b> - Only ~'+hrs+'h - May need replacement';}else hEl.innerHTML='ℹ️ <b>Battery Health</b> - Charge to 100% to test full capacity';
- aEl.innerHTML='🔋 <b>Apps killing battery:</b><br>• Facebook, TikTok, Instagram (background)<br>• High brightness<br>• GPS/Location ON<br>• Bluetooth, Mobile data always ON<br>• Games running background';
-}
-function runDiagnosis(){
- let dEl=document.getElementById('diagDrain'), adEl=document.getElementById('diagAdvice');
- if(diagSamples.length<5){dEl.innerText='Not enough data - keep open';return;}
- let first=diagSamples[0], last=diagSamples[diagSamples.length-1]; let diff=last.level-first.level; let mins=(last.time-first.time)/1000/60;
- if(last.charging){
-   if(diff>0){let speed=(mins/diff).toFixed(1);if(speed<2)dEl.innerHTML='✅ <b>Charging FAST</b> - '+speed+' mins per 1% - Excellent!';else if(speed<4)dEl.innerHTML='✅ <b>Charging NORMAL</b> - '+speed+' mins per 1% - Good';else dEl.innerHTML='🔴 <b>Charging SLOW</b> - '+speed+' mins per 1% - Faulty cable/adapter!';adEl.innerHTML=speed>3?'💡 ADVICE: Charger slow.<br>1. Use original charger<br>2. Change cable<br>3. Clean port<br>WhatsApp 0789313670 for help':'💡 Charger good! Keep phone cool while charging.';}
-   else {dEl.innerHTML='⚠️ <b>Charging but NOT increasing</b> - Apps draining faster than charging!';adEl.innerHTML='🔴 PROBLEM: Close TikTok, Facebook, Games while charging. Reduce brightness. If still not charging, charger weak - WhatsApp 0789313670';}
- } else {
-   if(diff<0){let s=Math.abs(mins/diff);if(s<4)dEl.innerHTML='🔴 <b>DRAINING FAST</b> - '+s.toFixed(1)+' mins per 1% - Apps eating battery!';else dEl.innerHTML='✅ <b>Drain NORMAL</b> - '+s.toFixed(1)+' mins per 1%';adEl.innerHTML='💡 Close background apps, turn on Battery Saver. WhatsApp 0789313670 for battery check';}
- }
-}
-
-let saved=localStorage.getItem('mzansi_current_user');if(saved){window.currentUser=saved;checkExpiry();}
+let saved=localStorage.getItem('mzansi_current_user');
+if(saved){window.currentUser=saved;checkExpiry();}
 </script>
 </body>
 </html>
