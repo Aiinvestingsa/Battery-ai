@@ -3,7 +3,6 @@
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Mzansi AI Battery Doctor - 0789313670</title>
-<link rel="icon" href="icon.png">
 <style>
 body{margin:0;background:#000;color:#fff;font-family:Arial;text-align:center;padding:12px;transition:background 0.3s}
 .card{background:#1a1a1a;border-radius:16px;padding:14px;margin:10px 0;border:2px solid #333}
@@ -14,23 +13,22 @@ input,select{width:100%;padding:12px;border-radius:10px;background:#000;color:#f
 .police-red{background:#FF0000 !important} .police-blue{background:#0000FF !important}
 .ringtone{border:2px solid #555;border-radius:12px;padding:10px;margin:8px 0;cursor:pointer;text-align:left} .ringtone.active{border-color:#FFD700;background:#2a2a00}
 .qBox{background:#000;border-radius:10px;padding:10px;margin:8px 0;border:1px solid #444;text-align:left}
-.logo{width:90px;height:90px;border-radius:20px;border:3px solid #FFD700;box-shadow:0 0 15px #FFD700}
+.logo-wrap{display:flex;align-items:center;justify-content:center;gap:10px;margin:10px 0}
+.logo-icon{width:60px;height:60px;background:linear-gradient(135deg,#FFD700,#00FF00);border-radius:18px;display:flex;align-items:center;justify-content:center;font-size:32px;border:3px solid #FFD700;box-shadow:0 0 15px #FFD700}
 </style>
 </head>
 <body id="body">
 
 <div id="authScreen">
-<div style="margin:10px">
-<img src="icon.png" class="logo" onerror="this.src='logo_full.png'">
-<h1 style="color:#FFD700;margin:8px 0 0">MZANSI AI</h1>
-<h2 style="color:#fff;margin:0;font-size:18px">BATTERY DOCTOR</h2>
-<p style="color:#25D366;font-size:12px;font-weight:900">💬 0789313670 - Secure - R20/R200</p>
+<div class="logo-wrap">
+<div class="logo-icon">🔋🩺</div>
+<div style="text-align:left"><h1 style="color:#FFD700;margin:0;font-size:20px">MZANSI AI</h1><h2 style="color:#fff;margin:0;font-size:16px">BATTERY DOCTOR</h2><p style="color:#25D366;margin:0;font-size:11px;font-weight:900">💬 0789313670</p></div>
 </div>
 
 <div class="card" id="regBox">
-<h3 style="color:#FFD700">📝 REGISTER</h3>
+<h3 style="color:#FFD700">📝 REGISTER - SECURE</h3>
 <input id="regName" placeholder="Full Name"><input id="regWA" placeholder="WhatsApp 0789313670" type="tel"><input id="regPin" placeholder="4-digit PIN" type="password" maxlength="4">
-<div class="qBox"><h4 style="color:#FFD700;margin:5px">🔐 Security Questions - For Forgot PIN</h4>
+<div class="qBox"><h4 style="color:#FFD700;margin:5px">🔐 Security Questions - Forgot PIN</h4>
 <select id="secQ1"><option value="pet">Pet name?</option><option value="school">Primary school?</option><option value="mother">Mother name?</option><option value="town">Born town?</option><option value="food">Favorite food?</option><option value="team">Soccer team?</option></select><input id="secA1" placeholder="Answer 1">
 <select id="secQ2"><option value="school">Primary school?</option><option value="pet">Pet name?</option><option value="mother">Mother name?</option><option value="town">Born town?</option><option value="food">Favorite food?</option><option value="team">Soccer team?</option></select><input id="secA2" placeholder="Answer 2"></div>
 <button class="btn gold" onclick="doRegister()">REGISTER</button>
@@ -43,16 +41,16 @@ input,select{width:100%;padding:12px;border-radius:10px;background:#000;color:#f
 </div>
 
 <div class="card hidden" id="forgotBox">
-<h3 style="color:#FF6B6B">🔓 FORGOT PIN</h3><input id="forWA" placeholder="WhatsApp" type="tel"><button class="btn grey" onclick="loadSecurity()">LOAD QUESTIONS</button>
+<h3 style="color:#FF6B6B">🔓 FORGOT PIN</h3><input id="forWA" placeholder="WhatsApp" type="tel"><button class="btn grey" onclick="loadSecurity()">LOAD MY QUESTIONS</button>
 <div id="forgotQ" class="hidden"><p id="fQ1" style="color:#FFD700;font-weight:900;text-align:left"></p><input id="fA1" placeholder="Answer 1"><p id="fQ2" style="color:#FFD700;font-weight:900;text-align:left"></p><input id="fA2" placeholder="Answer 2"><input id="newPin" placeholder="New PIN" type="password" maxlength="4"><button class="btn gold" onclick="resetPin()">RESET PIN</button><p id="forgotMsg"></p></div>
 <p><a href="#" onclick="showLogin()" style="color:#FFD700">Back to LOGIN</a></p>
 </div>
 
-<div class="card hidden" id="vouBox"><h3 style="color:#FFD700">🎟️ ENTER VOUCHER</h3><p style="font-size:11px;color:#00FF00">R20=30d | R200=365d | FREE=7d</p><input id="vouInput" placeholder="Type R20" style="border-color:#FFD700;border-width:3px;text-align:center;font-weight:900"><button class="btn gold" onclick="checkVoucher()">✅ ACTIVATE</button><p id="vouMsg"></p><a href="https://wa.me/27789313670?text=Hi%20Need%20voucher" target="_blank"><button class="btn whatsapp">💬 WHATSAPP 0789313670 TO BUY</button></a></div>
+<div class="card hidden" id="vouBox"><h3 style="color:#FFD700">🎟️ ENTER VOUCHER</h3><p style="font-size:11px;color:#00FF00">R20=30d | R200=365d | FREE=7d</p><input id="vouInput" placeholder="Type R20" style="border-color:#FFD700;border-width:3px;text-align:center;font-weight:900"><button class="btn gold" onclick="checkVoucher()">✅ ACTIVATE</button><p id="vouMsg"></p><a href="https://wa.me/27789313670?text=Hi%20Need%20voucher%20R20%20or%20R200" target="_blank"><button class="btn whatsapp">💬 BUY VOUCHER 0789313670</button></a></div>
 </div>
 
 <div id="appScreen" class="hidden">
-<div style="display:flex;align-items:center;justify-content:center;gap:10px;margin:8px"><img src="icon.png" style="width:50px;height:50px;border-radius:12px;border:2px solid #FFD700" onerror="this.style.display='none'"><div style="text-align:left"><h2 style="color:#FFD700;margin:0;font-size:16px">MZANSI AI BATTERY DOCTOR</h2><p style="color:#25D366;margin:0;font-size:11px">0789313670</p></div></div>
+<div class="logo-wrap" style="margin:5px 0"><div class="logo-icon" style="width:45px;height:45px;font-size:24px">🔋</div><div style="text-align:left"><h2 style="color:#FFD700;margin:0;font-size:14px">MZANSI AI BATTERY DOCTOR</h2><p style="color:#25D366;margin:0;font-size:10px">0789313670 - SA #1 Battery App</p></div></div>
 <p id="welcome" style="color:#FFD700;font-size:13px"></p><p id="expiry" style="font-size:11px"></p>
 <div class="card" id="main"><div class="percent" id="pct">--%</div><div id="stat">Reading...</div><div id="zuluStat" style="color:#FFD700;font-weight:900"></div></div>
 <div class="card"><input type="range" id="slider" min="10" max="100" value="80" oninput="setCustom(this.value)" style="width:100%;accent-color:#FFD700"><div style="display:flex;gap:8px"><input id="target" type="number" value="80" style="width:50%;color:#FFD700;font-weight:900;text-align:center"><div id="show" style="width:50%;background:#FFD700;color:#000;border-radius:10px;display:flex;align-items:center;justify-content:center;font-weight:900">80%</div></div></div>
@@ -71,7 +69,7 @@ input,select{width:100%;padding:12px;border-radius:10px;background:#000;color:#f
 
 <div class="card"><button class="btn green" id="startBtn" onclick="startAlert()">🟢 START ALERT</button><button class="btn red hidden" id="stopBtn" onclick="stopAlert()">🔴 STOP</button></div>
 <div class="card"><h4 style="color:#FFD700">🔍 DIAGNOSE</h4><button class="btn gold" onclick="diagnosePhone()" id="diagBtn">🩺 DIAGNOSE CHARGER</button><div id="diagResult" class="hidden" style="text-align:left;background:#000;padding:10px;border-radius:10px;font-size:12px"><p id="diagCharger"></p><p id="diagAdvice" style="color:#FFD700;font-weight:900"></p></div></div>
-<div class="card"><button class="btn grey" onclick="showSecurityEdit()" style="font-size:11px">🔐 CHANGE PIN / SECURITY</button><a href="https://wa.me/27789313670" target="_blank"><button class="btn whatsapp">💬 0789313670 CUSTOMER SERVICE</button></a><button class="btn grey" onclick="logout()" style="font-size:11px">LOGOUT</button></div>
+<div class="card"><button class="btn grey" onclick="showSecurityEdit()" style="font-size:11px">🔐 CHANGE PIN / SECURITY</button><a href="https://wa.me/27789313670" target="_blank"><button class="btn whatsapp">💬 0789313670 SUPPORT</button></a><button class="btn grey" onclick="logout()" style="font-size:11px">LOGOUT</button></div>
 </div>
 
 <div id="editSecScreen" class="hidden"><div class="card"><h3 style="color:#FFD700">🔐 CHANGE SECURITY</h3><input id="editOldPin" placeholder="Old PIN" type="password"><input id="editNewPin" placeholder="New PIN" type="password" maxlength="4"><div class="qBox"><select id="editQ1"><option value="pet">Pet name?</option><option value="school">Primary school?</option><option value="mother">Mother name?</option><option value="town">Born town?</option><option value="food">Favorite food?</option><option value="team">Soccer team?</option></select><input id="editA1" placeholder="New Answer 1"><select id="editQ2"><option value="school">Primary school?</option><option value="pet">Pet name?</option><option value="mother">Mother name?</option><option value="town">Born town?</option><option value="food">Favorite food?</option><option value="team">Soccer team?</option></select><input id="editA2" placeholder="New Answer 2"></div><button class="btn gold" onclick="saveSecurityEdit()">SAVE</button><button class="btn grey" onclick="hideSecurityEdit()">BACK</button><p id="editMsg"></p></div></div>
@@ -82,13 +80,13 @@ input,select{width:100%;padding:12px;border-radius:10px;background:#000;color:#f
 function saveLocal(wa,d){let l=JSON.parse(localStorage.getItem('mzansi_users')||'{}');l[wa]=d;localStorage.setItem('mzansi_users',JSON.stringify(l));localStorage.setItem('mzansi_current_user',wa);}
 function getLocal(wa){let l=JSON.parse(localStorage.getItem('mzansi_users')||'{}');return l[wa];}
 function qText(k){let m={pet:"What is your pet's name?",school:"What primary school did you go to?",mother:"What is your mother's maiden name?",town:"What town were you born in?",food:"What is your favorite food?",team:"What is your favorite soccer team?"};return m[k]||k;}
-function showReg(){document.getElementById('regBox').classList.remove('hidden');document.getElementById('logBox').classList.add('hidden');document.getElementById('forgotBox').classList.add('hidden');document.getElementById('vouBox').classList.add('hidden');document.getElementById('editSecScreen').classList.add('hidden');}
+function showReg(){document.getElementById('regBox').classList.remove('hidden');document.getElementById('logBox').classList.add('hidden');document.getElementById('forgotBox').classList.add('hidden');document.getElementById('vouBox').classList.add('hidden');}
 function showLogin(){document.getElementById('regBox').classList.add('hidden');document.getElementById('logBox').classList.remove('hidden');document.getElementById('forgotBox').classList.add('hidden');document.getElementById('vouBox').classList.add('hidden');}
 function showForgot(){document.getElementById('regBox').classList.add('hidden');document.getElementById('logBox').classList.add('hidden');document.getElementById('forgotBox').classList.remove('hidden');document.getElementById('vouBox').classList.add('hidden');}
 function showVou(){document.getElementById('regBox').classList.add('hidden');document.getElementById('logBox').classList.add('hidden');document.getElementById('forgotBox').classList.add('hidden');document.getElementById('vouBox').classList.remove('hidden');}
 function doRegister(){let n=document.getElementById('regName').value.trim(),wa=document.getElementById('regWA').value.trim().replace(/\s/g,''),pin=document.getElementById('regPin').value.trim();let q1=document.getElementById('secQ1').value,a1=document.getElementById('secA1').value.trim();let q2=document.getElementById('secQ2').value,a2=document.getElementById('secA2').value.trim();if(!n||!wa||pin.length<2){alert('Fill all');return}if(!a1||!a2){alert('Fill security answers');return}if(q1===q2){alert('Choose different questions');return}let d={name:n,pin,wa,created:Date.now(),expiry:0,voucher:'',secQ1:q1,secA1:a1.toLowerCase(),secQ2:q2,secA2:a2.toLowerCase()};saveLocal(wa,d);window.currentUser=wa;showVou();}
 function doLogin(){let wa=document.getElementById('logWA').value.trim().replace(/\s/g,''),pin=document.getElementById('logPin').value.trim();let local=getLocal(wa);if(local&&local.pin===pin){window.currentUser=wa;checkExpiry();}else alert('Wrong PIN - Try Forgot PIN');}
-function loadSecurity(){let wa=document.getElementById('forWA').value.trim().replace(/\s/g,'');if(!wa){alert('Enter WhatsApp');return}let local=getLocal(wa);if(!local||!local.secQ1){alert('No account or old account - WhatsApp 0789313670');return}document.getElementById('fQ1').innerText='Q1: '+qText(local.secQ1);document.getElementById('fQ2').innerText='Q2: '+qText(local.secQ2);document.getElementById('forgotQ').classList.remove('hidden');window.forgotWA=wa;}
+function loadSecurity(){let wa=document.getElementById('forWA').value.trim().replace(/\s/g,'');if(!wa){alert('Enter WhatsApp');return}let local=getLocal(wa);if(!local||!local.secQ1){alert('No account - WhatsApp 0789313670');return}document.getElementById('fQ1').innerText='Q1: '+qText(local.secQ1);document.getElementById('fQ2').innerText='Q2: '+qText(local.secQ2);document.getElementById('forgotQ').classList.remove('hidden');window.forgotWA=wa;}
 function resetPin(){let wa=window.forgotWA;let local=getLocal(wa);let a1=document.getElementById('fA1').value.trim().toLowerCase(),a2=document.getElementById('fA2').value.trim().toLowerCase(),newPin=document.getElementById('newPin').value.trim();if(!a1||!a2||!newPin){alert('Fill all');return}if(a1===local.secA1&&a2===local.secA2){local.pin=newPin;saveLocal(wa,local);document.getElementById('forgotMsg').innerHTML='<span style="color:#00FF00">✅ PIN RESET to '+newPin+'</span>';setTimeout(()=>showLogin(),1200);}else document.getElementById('forgotMsg').innerHTML='<span style="color:#FF0000">❌ Wrong answers</span>';}
 function checkExpiry(){let u=getLocal(window.currentUser);if(!u){showReg();return}if(u.expiry&&Date.now()<u.expiry){openApp(u);}else{lockApp(u);}}
 function lockApp(u){document.getElementById('authScreen').classList.remove('hidden');document.getElementById('appScreen').classList.add('hidden');document.getElementById('editSecScreen').classList.add('hidden');showVou();}
