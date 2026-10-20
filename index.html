@@ -2,129 +2,212 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mzansi Battery - Custom Ringtone - 0789313670</title>
+<title>Mzansi Battery - Record Voice - 0789313670</title>
 <style>
 body{margin:0;background:#000;color:#fff;font-family:Arial;text-align:center;padding:12px;transition:background 0.3s}
 .card{background:#1a1a1a;border-radius:16px;padding:14px;margin:10px 0;border:2px solid #333}
-input,select{width:100%;padding:14px;border-radius:10px;background:#000;color:#fff;border:2px solid #555;margin:6px 0;box-sizing:border-box;font-size:14px}
+input,select{width:100%;padding:14px;border-radius:10px;background:#000;color:#fff;border:2px solid #555;margin:6px 0;box-sizing:border-box}
 .btn{width:100%;padding:14px;border:none;border-radius:10px;font-weight:900;margin:6px 0;cursor:pointer;font-size:14px}
 .gold{background:#FFD700;color:#000} .green{background:#00FF00;color:#000} .red{background:#FF0000;color:#fff} .grey{background:#333;color:#fff}
 .whatsapp{background:#25D366;color:#fff} .percent{font-size:75px;font-weight:900;color:#00FF00} .hidden{display:none}
 .police-red{background:#FF0000 !important} .police-blue{background:#0000FF !important}
-.ringtone{border:2px solid #555;border-radius:10px;padding:10px;margin:6px 0;cursor:pointer;text-align:left} .ringtone.active{border-color:#FFD700;background:#2a2a00}
+.ringtone{border:2px solid #555;border-radius:12px;padding:12px;margin:8px 0;cursor:pointer;text-align:left} .ringtone.active{border-color:#FFD700;background:#2a2a00}
+.record-btn{background:#FF0000;color:#fff;animation:pulse 1s infinite} @keyframes pulse{0%{transform:scale(1)}50%{transform:scale(1.05)}100%{transform:scale(1)}}
 </style>
 </head>
 <body id="body">
 <div id="authScreen">
-<h1 style="color:#FFD700">🇿🇦 MZANSI BATTERY</h1><p style="font-size:11px;color:#aaa">0789313670 - Custom Ringtone - Voucher R20/R200</p>
-<div class="card" id="regBox"><h3 style="color:#FFD700">📝 REGISTER</h3><input id="regName" placeholder="Name"><input id="regWA" placeholder="WhatsApp" type="tel"><input id="regPin" placeholder="PIN" type="password" maxlength="4"><button class="btn gold" onclick="doRegister()">REGISTER</button><p><a href="#" onclick="showLogin()" style="color:#FFD700">Have account? LOGIN</a></p></div>
-<div class="card hidden" id="logBox"><h3 style="color:#FFD700">🔐 LOGIN</h3><input id="logWA" placeholder="WhatsApp" type="tel"><input id="logPin" placeholder="PIN" type="password"><button class="btn green" onclick="doLogin()">LOGIN</button></div>
-<div class="card hidden" id="vouBox"><h3 style="color:#FFD700">🎟️ ENTER VOUCHER</h3><p style="font-size:11px;color:#00FF00">Type R20 = 30 days | R200 = 365 days | FREE = 7 days</p><input id="vouInput" placeholder="Type R20" style="border-color:#FFD700;border-width:3px;text-align:center;font-weight:900"><button class="btn gold" onclick="checkVoucher()">✅ ACTIVATE</button><p id="vouMsg"></p></div>
+<h1 style="color:#FFD700">🇿🇦 MZANSI BATTERY</h1><p style="font-size:11px;color:#aaa">0789313670 - Record Your Voice!</p>
+<div class="card" id="regBox"><h3>📝 REGISTER</h3><input id="regName" placeholder="Name"><input id="regWA" placeholder="WhatsApp" type="tel"><input id="regPin" placeholder="PIN" type="password" maxlength="4"><button class="btn gold" onclick="doRegister()">REGISTER</button><p><a href="#" onclick="showLogin()" style="color:#FFD700">Have account? LOGIN</a></p></div>
+<div class="card hidden" id="logBox"><h3>🔐 LOGIN</h3><input id="logWA" placeholder="WhatsApp" type="tel"><input id="logPin" placeholder="PIN" type="password"><button class="btn green" onclick="doLogin()">LOGIN</button></div>
+<div class="card hidden" id="vouBox"><h3 style="color:#FFD700">🎟️ ENTER VOUCHER</h3><p style="font-size:11px;color:#00FF00">R20=30d | R200=365d | FREE=7d</p><input id="vouInput" placeholder="Type R20" style="border-color:#FFD700;border-width:3px;text-align:center;font-weight:900"><button class="btn gold" onclick="checkVoucher()">✅ ACTIVATE</button><p id="vouMsg"></p></div>
 </div>
 
 <div id="appScreen" class="hidden">
 <h2 style="color:#FFD700">🇿🇦 MZANSI AI</h2><p id="welcome" style="color:#FFD700;font-size:13px"></p><p id="expiry" style="font-size:11px"></p>
-
 <div class="card" id="main"><div class="percent" id="pct">--%</div><div id="stat">Reading...</div><div id="zuluStat" style="color:#FFD700;font-weight:900"></div></div>
 
-<div class="card">
-<input type="range" id="slider" min="10" max="100" value="80" oninput="setCustom(this.value)" style="width:100%;accent-color:#FFD700">
-<div style="display:flex;gap:8px"><input id="target" type="number" value="80" style="width:50%;color:#FFD700;font-weight:900;text-align:center"><div id="show" style="width:50%;background:#FFD700;color:#000;border-radius:10px;display:flex;align-items:center;justify-content:center;font-weight:900">80%</div></div>
-</div>
+<div class="card"><input type="range" id="slider" min="10" max="100" value="80" oninput="setCustom(this.value)" style="width:100%;accent-color:#FFD700"><div style="display:flex;gap:8px"><input id="target" type="number" value="80" style="width:50%;color:#FFD700;font-weight:900;text-align:center"><div id="show" style="width:50%;background:#FFD700;color:#000;border-radius:10px;display:flex;align-items:center;justify-content:center;font-weight:900">80%</div></div></div>
 
 <div class="card" style="border-color:#FFD700;background:#1a1a00">
-<h4 style="color:#FFD700;margin:5px">🔊 CUSTOM RINGTONE WHEN FULL</h4>
-<p style="font-size:11px;color:#aaa">Choose sound when battery reaches target</p>
+<h4 style="color:#FFD700;margin:5px">🔊 CUSTOM RINGTONE WHEN FULL - NEW!</h4>
 
 <div onclick="selectRingtone('zulu')" id="ringZulu" class="ringtone active">
-<b>🗣️ ZULU VOICE (Default)</b><br><small>"Mntanami battery igcwele khipha shaja manje"</small><br><button class="btn" style="background:#333;color:#fff;font-size:11px;padding:6px" onclick="event.stopPropagation();testSound('zulu')">▶️ TEST</button>
+<b>🗣️ ZULU VOICE (Default)</b><br><small>"Mntanami battery igcwele"</small><br><button class="btn" style="background:#333;color:#fff;font-size:11px;padding:6px" onclick="event.stopPropagation();testSound('zulu')">▶️ TEST</button>
 </div>
 
 <div onclick="selectRingtone('beep')" id="ringBeep" class="ringtone">
-<b>🔔 LOUD BEEP BEEP</b><br><small>Classic alarm beep - Very loud</small><br><button class="btn" style="background:#333;color:#fff;font-size:11px;padding:6px" onclick="event.stopPropagation();testSound('beep')">▶️ TEST</button>
-</div>
-
-<div onclick="selectRingtone('gqom')" id="ringGqom" class="ringtone">
-<b>🎵 GQOM ALARM</b><br><small>Battery full - Gqom style beat</small><br><button class="btn" style="background:#333;color:#fff;font-size:11px;padding:6px" onclick="event.stopPropagation();testSound('gqom')">▶️ TEST</button>
-</div>
-
-<div onclick="selectRingtone('amapiano')" id="ringAmapiano" class="ringtone">
-<b>🎹 AMAPIANO ALARM</b><br><small>Amapiano log drum when full</small><br><button class="btn" style="background:#333;color:#fff;font-size:11px;padding:6px" onclick="event.stopPropagation();testSound('amapiano')">▶️ TEST</button>
+<b>🔔 LOUD BEEP</b><br><small>Beep beep alarm</small><br><button class="btn" style="background:#333;color:#fff;font-size:11px;padding:6px" onclick="event.stopPropagation();testSound('beep')">▶️ TEST</button>
 </div>
 
 <div onclick="selectRingtone('siren')" id="ringSiren" class="ringtone">
-<b>🚨 POLICE SIREN</b><br><small>Woo woo police siren</small><br><button class="btn" style="background:#333;color:#fff;font-size:11px;padding:6px" onclick="event.stopPropagation();testSound('siren')">▶️ TEST</button>
+<b>🚨 SIREN</b><br><small>Police woo woo</small><br><button class="btn" style="background:#333;color:#fff;font-size:11px;padding:6px" onclick="event.stopPropagation();testSound('siren')">▶️ TEST</button>
 </div>
 
-<div onclick="selectRingtone('custom')" id="ringCustom" class="ringtone">
-<b>🎤 YOUR OWN VOICE / SONG</b><br><small>Upload MP3 or record your voice</small>
-<input type="file" id="customFile" accept="audio/*" onchange="handleCustomFile(this)" style="margin-top:8px">
+<div id="ringCustom" class="ringtone" style="border-color:#FF0000;background:#2a0000">
+<b>🎤 RECORD YOUR OWN VOICE - NEW!</b><br>
+<small>Record: "Hey battery full! Unplug!" in your own voice</small>
+
+<div style="background:#000;border-radius:10px;padding:10px;margin:8px 0">
+<p id="recStatus" style="font-size:12px;color:#FFD700">Click record and speak</p>
+<button class="btn red" id="recBtn" onclick="toggleRecord()">🎤 START RECORDING</button>
+<div style="display:flex;gap:6px">
+<button class="btn" style="background:#333;color:#fff;font-size:11px;flex:1" onclick="playRecorded()">▶️ PLAY MY VOICE</button>
+<button class="btn" style="background:#333;color:#fff;font-size:11px;flex:1" onclick="deleteRecorded()">🗑️ DELETE</button>
+</div>
+<p id="recTime" style="font-size:11px;color:#aaa"></p>
+</div>
+
+<div style="background:#000;border-radius:10px;padding:10px;margin:8px 0">
+<small>Or upload MP3 song:</small>
+<input type="file" id="customFile" accept="audio/*" onchange="handleCustomFile(this)">
 <p id="customName" style="font-size:11px;color:#00FF00"></p>
-<button class="btn" style="background:#333;color:#fff;font-size:11px;padding:6px" onclick="event.stopPropagation();testSound('custom')">▶️ TEST CUSTOM</button>
 </div>
 
-<p id="selectedRing" style="color:#FFD700;font-weight:900;font-size:12px">Selected: ZULU VOICE</p>
+<button class="btn gold" onclick="selectRingtone('custom');testSound('custom')" style="font-size:12px">✅ USE MY RECORDED VOICE / SONG AS ALARM</button>
 </div>
 
-<div class="card">
-<button class="btn green" id="startBtn" onclick="startAlert()">🟢 START ALERT WITH CUSTOM SOUND</button>
-<button class="btn red hidden" id="stopBtn" onclick="stopAlert()">🔴 STOP - I UNPLUGGED</button>
-</div>
-
-<div class="card" style="border-color:#FFD700">
-<h4 style="color:#FFD700">🔍 DIAGNOSE</h4>
-<button class="btn gold" onclick="diagnosePhone()" id="diagBtn">🩺 DIAGNOSE CHARGER</button>
-<div id="diagResult" class="hidden" style="text-align:left;background:#000;padding:10px;border-radius:10px;font-size:12px"><p id="diagCharger"></p><p id="diagHealth"></p><p id="diagAdvice" style="color:#FFD700;font-weight:900"></p></div>
+<p id="selectedRing" style="color:#FFD700;font-weight:900">Selected: ZULU VOICE</p>
 </div>
 
 <div class="card">
-<a href="https://wa.me/27789313670" target="_blank"><button class="btn whatsapp">💬 0789313670</button></a>
-<button class="btn grey" onclick="logout()">LOGOUT</button>
+<button class="btn green" id="startBtn" onclick="startAlert()">🟢 START ALERT</button>
+<button class="btn red hidden" id="stopBtn" onclick="stopAlert()">🔴 STOP</button>
 </div>
+
+<div class="card"><h4 style="color:#FFD700">🔍 DIAGNOSE</h4><button class="btn gold" onclick="diagnosePhone()" id="diagBtn">🩺 DIAGNOSE</button><div id="diagResult" class="hidden" style="text-align:left;background:#000;padding:10px;border-radius:10px;font-size:12px"><p id="diagCharger"></p><p id="diagAdvice" style="color:#FFD700;font-weight:900"></p></div></div>
+
+<div class="card"><a href="https://wa.me/27789313670" target="_blank"><button class="btn whatsapp">💬 0789313670</button></a><button class="btn grey" onclick="logout()">LOGOUT</button></div>
 </div>
 
 <audio id="audioPlayer" loop></audio>
+<audio id="recordedAudio"></audio>
 
 <script>
-let selectedPkg='month', selectedRingtone='zulu', customAudioURL=null;
+let selectedPkg='month',selectedRingtone='zulu',customAudioURL=null;
 function saveLocal(wa,d){let l=JSON.parse(localStorage.getItem('mzansi_users')||'{}');l[wa]=d;localStorage.setItem('mzansi_users',JSON.stringify(l));localStorage.setItem('mzansi_current_user',wa);}
 function getLocal(wa){let l=JSON.parse(localStorage.getItem('mzansi_users')||'{}');return l[wa];}
 function showReg(){document.getElementById('regBox').classList.remove('hidden');document.getElementById('logBox').classList.add('hidden');document.getElementById('vouBox').classList.add('hidden')}
 function showLogin(){document.getElementById('regBox').classList.add('hidden');document.getElementById('logBox').classList.remove('hidden');document.getElementById('vouBox').classList.add('hidden')}
 function showVou(){document.getElementById('regBox').classList.add('hidden');document.getElementById('logBox').classList.add('hidden');document.getElementById('vouBox').classList.remove('hidden')}
-function doRegister(){let n=document.getElementById('regName').value.trim(),wa=document.getElementById('regWA').value.trim().replace(/\s/g,''),pin=document.getElementById('regPin').value.trim();if(!n||!wa||pin.length<2){alert('Fill all');return}let d={name:n,pin,wa,created:Date.now(),expiry:0,voucher:'',package:''};saveLocal(wa,d);window.currentUser=wa;showVou();}
+function doRegister(){let n=document.getElementById('regName').value.trim(),wa=document.getElementById('regWA').value.trim().replace(/\s/g,''),pin=document.getElementById('regPin').value.trim();if(!n||!wa||pin.length<2){alert('Fill all');return}let d={name:n,pin,wa,created:Date.now(),expiry:0,voucher:''};saveLocal(wa,d);window.currentUser=wa;showVou();}
 function doLogin(){let wa=document.getElementById('logWA').value.trim().replace(/\s/g,''),pin=document.getElementById('logPin').value.trim();let local=getLocal(wa);if(local&&local.pin===pin){window.currentUser=wa;checkExpiry();}else alert('Wrong PIN');}
 function checkExpiry(){let u=getLocal(window.currentUser);if(!u){showReg();return}if(u.expiry&&Date.now()<u.expiry){openApp(u);}else{lockApp(u);}}
 function lockApp(u){document.getElementById('authScreen').classList.remove('hidden');document.getElementById('appScreen').classList.add('hidden');showVou();}
-function checkVoucher(){
- let raw=document.getElementById('vouInput').value.trim(),code=raw.toUpperCase();
- if(!code){alert('Type R20');return}
- let days=code.includes('200')||code.includes('YEAR')?365:code==='FREE'||code==='TEST'?7:30;
- let label=days>100?'1 YEAR R200':days===7?'7 Days Free':'1 MONTH R20';
- let exp=Date.now()+days*86400000;
- let local=getLocal(window.currentUser);local.expiry=exp;local.voucher=raw;local.package=days>100?'year':'month';local.packageLabel=label;
- saveLocal(window.currentUser,local);
- document.getElementById('vouMsg').innerHTML=`<span style="color:#00FF00;font-weight:900">✅ ${label} ACTIVATED ${days} days</span>`;
- setTimeout(()=>openApp(local),800);
-}
+function checkVoucher(){let raw=document.getElementById('vouInput').value.trim(),code=raw.toUpperCase();if(!code){alert('Type R20');return}let days=code.includes('200')||code.includes('YEAR')?365:code==='FREE'||code==='TEST'?7:30;let label=days>100?'1 YEAR R200':days===7?'7 Days Free':'1 MONTH R20';let exp=Date.now()+days*86400000;let local=getLocal(window.currentUser);local.expiry=exp;local.voucher=raw;local.package=days>100?'year':'month';local.packageLabel=label;saveLocal(window.currentUser,local);document.getElementById('vouMsg').innerHTML=`<span style="color:#00FF00;font-weight:900">✅ ${label} ${days} days</span>`;setTimeout(()=>openApp(local),800);}
 function openApp(u){document.getElementById('authScreen').classList.add('hidden');document.getElementById('appScreen').classList.remove('hidden');document.getElementById('welcome').innerText='Sawubona '+(u.name||'User')+' - '+u.packageLabel;let days=Math.ceil((u.expiry-Date.now())/86400000);document.getElementById('expiry').innerHTML=`<span style="color:${days<=3?'#FF0000':'#00FF00'}">${days} days left</span>`;initBattery();loadRingtone();}
 function logout(){localStorage.removeItem('mzansi_current_user');location.reload()}
 
-// RINGTONE SYSTEM
+// RINGTONE + RECORD SYSTEM
+let mediaRecorder=null,recordedChunks=[],isRecording=false,recordedBlob=null,recordTimer=null,recordSeconds=0;
+
 function loadRingtone(){
  selectedRingtone=localStorage.getItem('mzansi_ringtone')||'zulu';
  customAudioURL=localStorage.getItem('mzansi_custom_url');
- if(customAudioURL){document.getElementById('customName').innerText='✅ Custom loaded: '+ (localStorage.getItem('mzansi_custom_name')||'your sound');}
+ let customName=localStorage.getItem('mzansi_custom_name');
+ let recordedBase64=localStorage.getItem('mzansi_recorded_base64');
+ if(recordedBase64){
+  document.getElementById('recStatus').innerHTML='✅ Voice recorded: '+(customName||'your voice')+' - Will play when full!';
+  document.getElementById('recStatus').style.color='#00FF00';
+  recordedBlob=true;
+ }
+ if(customAudioURL && customName){
+  document.getElementById('customName').innerText='✅ Song: '+customName;
+ }
  selectRingtone(selectedRingtone);
 }
 function selectRingtone(type){
  selectedRingtone=type;
  localStorage.setItem('mzansi_ringtone',type);
  document.querySelectorAll('.ringtone').forEach(e=>e.classList.remove('active'));
- document.getElementById('ring'+type.charAt(0).toUpperCase()+type.slice(1)).classList.add('active');
- let names={zulu:'ZULU VOICE',beep:'LOUD BEEP',gqom:'GQOM ALARM',amapiano:'AMAPIANO',siren:'POLICE SIREN',custom:'YOUR CUSTOM SOUND'};
- document.getElementById('selectedRing').innerText='Selected: '+names[type];
+ let el=document.getElementById('ring'+type.charAt(0).toUpperCase()+type.slice(1));
+ if(el)el.classList.add('active');
+ let names={zulu:'ZULU VOICE',beep:'LOUD BEEP',siren:'POLICE SIREN',custom:'YOUR RECORDED VOICE / SONG'};
+ document.getElementById('selectedRing').innerText='Selected: '+(names[type]||type.toUpperCase());
  stopTest();
+}
+
+async function toggleRecord(){
+ let btn=document.getElementById('recBtn');
+ let status=document.getElementById('recStatus');
+ if(!isRecording){
+  try{
+   let stream=await navigator.mediaDevices.getUserMedia({audio:true});
+   mediaRecorder=new MediaRecorder(stream);
+   recordedChunks=[];
+   mediaRecorder.ondataavailable=e=>{if(e.data.size>0)recordedChunks.push(e.data);};
+   mediaRecorder.onstop=()=>{
+    recordedBlob=new Blob(recordedChunks,{type:'audio/webm'});
+    let url=URL.createObjectURL(recordedBlob);
+    customAudioURL=url;
+    localStorage.setItem('mzansi_custom_url',url);
+    let reader=new FileReader();
+    reader.onload=()=>{
+     try{
+      localStorage.setItem('mzansi_recorded_base64',reader.result);
+      localStorage.setItem('mzansi_custom_name','My Voice Recording');
+     }catch(e){}
+    };
+    reader.readAsDataURL(recordedBlob);
+    status.innerHTML='✅ Recorded! Click PLAY to hear, then select USE MY VOICE';
+    status.style.color='#00FF00';
+    document.getElementById('recTime').innerText=`Recorded ${recordSeconds}s - Saved!`;
+    selectRingtone('custom');
+   };
+   mediaRecorder.start();
+   isRecording=true;
+   recordSeconds=0;
+   btn.innerText='🔴 STOP RECORDING - Speak now!';
+   btn.classList.add('record-btn');
+   status.innerHTML='🔴 Recording... Say: "Battery full! Unplug phone!"';
+   status.style.color='#FF0000';
+   recordTimer=setInterval(()=>{
+    recordSeconds++;
+    document.getElementById('recTime').innerText=`Recording: ${recordSeconds}s - Max 10s`;
+    if(recordSeconds>=10)toggleRecord();
+   },1000);
+  }catch(err){
+   alert('Microphone blocked - Allow mic in browser settings. Or upload MP3 instead.');
+   status.innerText='❌ Mic blocked - Use upload MP3';
+  }
+ } else {
+  mediaRecorder.stop();
+  mediaRecorder.stream.getTracks().forEach(t=>t.stop());
+  isRecording=false;
+  btn.innerText='🎤 START RECORDING AGAIN';
+  btn.classList.remove('record-btn');
+  clearInterval(recordTimer);
+ }
+}
+function playRecorded(){
+ let base64=localStorage.getItem('mzansi_recorded_base64');
+ let url=localStorage.getItem('mzansi_custom_url');
+ let audio=document.getElementById('recordedAudio');
+ if(base64||url||recordedBlob){
+  if(recordedBlob && recordedChunks.length>0){
+   let blob=new Blob(recordedChunks,{type:'audio/webm'});
+   audio.src=URL.createObjectURL(blob);
+  } else {
+   audio.src=base64||url;
+  }
+  audio.play().catch(()=>alert('No recording yet - Click START RECORDING first'));
+ } else {
+  alert('No recording - Click START RECORDING and speak!');
+ }
+}
+function deleteRecorded(){
+ localStorage.removeItem('mzansi_recorded_base64');
+ localStorage.removeItem('mzansi_custom_url');
+ localStorage.removeItem('mzansi_custom_name');
+ customAudioURL=null;
+ recordedBlob=null;
+ recordedChunks=[];
+ document.getElementById('recStatus').innerText='Deleted - Record new voice';
+ document.getElementById('recStatus').style.color='#FFD700';
+ document.getElementById('recTime').innerText='';
+ document.getElementById('customName').innerText='';
+ selectRingtone('zulu');
+ alert('Deleted - Record again');
 }
 function handleCustomFile(input){
  if(input.files&&input.files[0]){
@@ -133,69 +216,30 @@ function handleCustomFile(input){
   customAudioURL=url;
   localStorage.setItem('mzansi_custom_url',url);
   localStorage.setItem('mzansi_custom_name',file.name);
-  document.getElementById('customName').innerText='✅ Loaded: '+file.name+' - Will play when full!';
-  selectRingtone('custom');
-  // Try save as base64 for persistence (limited)
+  document.getElementById('customName').innerText='✅ Song loaded: '+file.name;
   let reader=new FileReader();
-  reader.onload=function(e){
-   try{localStorage.setItem('mzansi_custom_base64',e.target.result);localStorage.setItem('mzansi_custom_name',file.name);}catch(err){}
-  };
+  reader.onload=()=>{try{localStorage.setItem('mzansi_recorded_base64',reader.result);localStorage.setItem('mzansi_custom_name',file.name);}catch(e){}};
   reader.readAsDataURL(file);
+  selectRingtone('custom');
  }
 }
 let audioCtx=null;
-function playBeep(freq,dur,type){
- if(!audioCtx)audioCtx=new (window.AudioContext||window.webkitAudioContext)();
- let o=audioCtx.createOscillator(),g=audioCtx.createGain();
- o.type=type||'sine';o.frequency.value=freq;o.connect(g);g.connect(audioCtx.destination);
- g.gain.setValueAtTime(0.8,audioCtx.currentTime);g.gain.exponentialRampToValueAtTime(0.01,audioCtx.currentTime+dur);
- o.start();o.stop(audioCtx.currentTime+dur);
-}
+function playBeep(freq,dur,type){if(!audioCtx)audioCtx=new (window.AudioContext||window.webkitAudioContext)();let o=audioCtx.createOscillator(),g=audioCtx.createGain();o.type=type||'sine';o.frequency.value=freq;o.connect(g);g.connect(audioCtx.destination);g.gain.setValueAtTime(0.8,audioCtx.currentTime);g.gain.exponentialRampToValueAtTime(0.01,audioCtx.currentTime+dur);o.start();o.stop(audioCtx.currentTime+dur);}
 let testInterval=null;
 function testSound(type){
  stopTest();
  let audio=document.getElementById('audioPlayer');
- if(type==='zulu'){
-  if('speechSynthesis' in window){
-   let u=new SpeechSynthesisUtterance('Mntanami battery igcwele khipha shaja manje');
-   u.lang='zu-ZA';u.rate=0.9;speechSynthesis.speak(u);
-  }
-  testInterval=setInterval(()=>{playBeep(800,0.3);},500);
-  setTimeout(stopTest,3000);
- } else if(type==='beep'){
-  testInterval=setInterval(()=>{playBeep(1000,0.4,'square');playBeep(1500,0.4,'square');},600);
-  setTimeout(stopTest,3000);
- } else if(type==='gqom'){
-  let beat=0;
-  testInterval=setInterval(()=>{playBeep(beat%2===0?80:120,0.2,'square');if(beat%4===0)playBeep(1000,0.1);beat++;},250);
-  setTimeout(stopTest,4000);
- } else if(type==='amapiano'){
-  let notes=[261,329,392,523];
-  let i=0;
-  testInterval=setInterval(()=>{playBeep(notes[i%notes.length],0.4,'triangle');playBeep(55,0.5,'sine');i++;},350);
-  setTimeout(stopTest,4000);
- } else if(type==='siren'){
-  let up=true,f=400;
-  testInterval=setInterval(()=>{playBeep(f,0.15,'sawtooth');f=up?f+80:f-80;if(f>900)up=false;if(f<400)up=true;},120);
-  setTimeout(stopTest,4000);
- } else if(type==='custom'){
-  let base64=localStorage.getItem('mzansi_custom_base64');
-  if(customAudioURL||base64){
-   audio.src=customAudioURL||base64;
-   audio.play().catch(()=>alert('Custom file not loaded - upload MP3 first'));
-   setTimeout(()=>{audio.pause();},4000);
-  } else {alert('Upload your MP3 first in custom section');}
+ if(type==='zulu'){if('speechSynthesis' in window){let u=new SpeechSynthesisUtterance('Mntanami battery igcwele khipha shaja manje');u.lang='zu-ZA';speechSynthesis.speak(u);}testInterval=setInterval(()=>playBeep(800,0.3),500);setTimeout(stopTest,3000);}
+ else if(type==='beep'){testInterval=setInterval(()=>{playBeep(1000,0.4,'square');},400);setTimeout(stopTest,3000);}
+ else if(type==='siren'){let up=true,f=400;testInterval=setInterval(()=>{playBeep(f,0.15,'sawtooth');f=up?f+80:f-80;if(f>900)up=false;if(f<400)up=true;},120);setTimeout(stopTest,4000);}
+ else if(type==='custom'){
+  let base64=localStorage.getItem('mzansi_recorded_base64');
+  if(base64||customAudioURL){audio.src=base64||customAudioURL;audio.loop=false;audio.play().catch(()=>alert('No custom sound - Record voice first'));setTimeout(()=>audio.pause(),4000);}else alert('Record your voice first - Click START RECORDING');
  }
 }
-function stopTest(){
- if(testInterval)clearInterval(testInterval);
- testInterval=null;
- if('speechSynthesis' in window)speechSynthesis.cancel();
- let audio=document.getElementById('audioPlayer');audio.pause();audio.currentTime=0;
- if(audioCtx){try{audioCtx.close();}catch(e){}audioCtx=null;}
-}
+function stopTest(){if(testInterval)clearInterval(testInterval);testInterval=null;if('speechSynthesis' in window)speechSynthesis.cancel();let audio=document.getElementById('audioPlayer');audio.pause();if(audioCtx){try{audioCtx.close();}catch(e){}audioCtx=null;}}
 
-// Battery Logic with Custom Ringtone
+// Battery
 let battery=null,target=80,alertOn=false,alarmLoop=null,flashLoop=null;
 function setCustom(v){target=parseInt(v);document.getElementById('target').value=target;document.getElementById('slider').value=target;document.getElementById('show').innerText=target+'%';localStorage.setItem('mzansi_target',target)}
 async function initBattery(){if('getBattery' in navigator){try{battery=await navigator.getBattery();battery.addEventListener('levelchange',upd);battery.addEventListener('chargingchange',upd);upd()}catch(e){}}target=parseInt(localStorage.getItem('mzansi_target')||'80');setCustom(target)}
@@ -204,51 +248,23 @@ function shout(){
  if(alarmLoop)return;
  let isRed=true,body=document.getElementById('body'),main=document.getElementById('main');
  flashLoop=setInterval(()=>{body.className=isRed?'police-red':'police-blue';main.className='card '+(isRed?'police-blue':'police-red');isRed=!isRed;if(navigator.vibrate)navigator.vibrate([300,100,300]);},200);
- document.getElementById('pct').innerText=target+'% FULL!';
- document.getElementById('zuluStat').innerText='🔊 Playing: '+selectedRingtone.toUpperCase();
- document.getElementById('stopBtn').classList.remove('hidden');
- document.getElementById('startBtn').innerText='🚨 UNPLUG! PLAYING SOUND!';
- // PLAY SELECTED RINGTONE IN LOOP
- if(selectedRingtone==='zulu'){
-  alarmLoop=setInterval(()=>{
-   if('speechSynthesis' in window){
-    let u=new SpeechSynthesisUtterance('Mntanami battery igcwele khipha shaja manje');
-    u.lang='zu-ZA';speechSynthesis.speak(u);
-   }
-  },2500);
- } else if(selectedRingtone==='beep'){
-  alarmLoop=setInterval(()=>{playBeep(1000,0.5,'square');setTimeout(()=>playBeep(1500,0.5,'square'),200);},800);
- } else if(selectedRingtone==='gqom'){
-  let b=0;
-  alarmLoop=setInterval(()=>{playBeep(b%2===0?90:130,0.25,'square');b++;},280);
- } else if(selectedRingtone==='amapiano'){
-  let notes=[261,329,392,523],i=0;
-  alarmLoop=setInterval(()=>{playBeep(notes[i%notes.length],0.4,'triangle');playBeep(55,0.6,'sine');i++;},400);
- } else if(selectedRingtone==='siren'){
-  let up=true,f=500;
-  alarmLoop=setInterval(()=>{playBeep(f,0.2,'sawtooth');f=up?f+90:f-90;if(f>1000)up=false;if(f<400)up=true;},130);
- } else if(selectedRingtone==='custom'){
+ document.getElementById('pct').innerText=target+'% FULL!';document.getElementById('zuluStat').innerText='🔊 Playing: '+selectedRingtone.toUpperCase();document.getElementById('stopBtn').classList.remove('hidden');document.getElementById('startBtn').innerText='🚨 UNPLUG! PLAYING!';
+ if(selectedRingtone==='zulu'){alarmLoop=setInterval(()=>{if('speechSynthesis' in window){let u=new SpeechSynthesisUtterance('Mntanami battery igcwele khipha shaja manje');u.lang='zu-ZA';speechSynthesis.speak(u);}},2500);}
+ else if(selectedRingtone==='beep'){alarmLoop=setInterval(()=>playBeep(1000,0.5,'square'),700);}
+ else if(selectedRingtone==='siren'){let up=true,f=500;alarmLoop=setInterval(()=>{playBeep(f,0.2,'sawtooth');f=up?f+90:f-90;if(f>1000)up=false;if(f<400)up=true;},130);}
+ else if(selectedRingtone==='custom'){
   let audio=document.getElementById('audioPlayer');
-  let base64=localStorage.getItem('mzansi_custom_base64');
-  audio.src=customAudioURL||base64||'';
+  let base64=localStorage.getItem('mzansi_recorded_base64');
+  audio.src=base64||customAudioURL||'';
   audio.loop=true;
   audio.play().catch(()=>{});
   alarmLoop=setInterval(()=>{},1000);
  }
 }
-function stopShout(){
- document.getElementById('body').className='';document.getElementById('main').className='card';
- if(flashLoop)clearInterval(flashLoop);if(alarmLoop)clearInterval(alarmLoop);
- flashLoop=null;alarmLoop=null;
- if('speechSynthesis' in window)speechSynthesis.cancel();
- let audio=document.getElementById('audioPlayer');audio.pause();audio.loop=false;
- if(audioCtx){try{audioCtx.close();}catch(e){}audioCtx=null;}
- document.getElementById('zuluStat').innerText='';
- upd();
-}
-function startAlert(){alertOn=true;setCustom(parseInt(document.getElementById('target').value));document.getElementById('startBtn').innerText='🟢 Alert ON at '+target+'% - Sound: '+selectedRingtone.toUpperCase();}
+function stopShout(){document.getElementById('body').className='';document.getElementById('main').className='card';if(flashLoop)clearInterval(flashLoop);if(alarmLoop)clearInterval(alarmLoop);flashLoop=null;alarmLoop=null;if('speechSynthesis' in window)speechSynthesis.cancel();let audio=document.getElementById('audioPlayer');audio.pause();audio.loop=false;if(audioCtx){try{audioCtx.close();}catch(e){}audioCtx=null;}document.getElementById('zuluStat').innerText='';upd();}
+function startAlert(){alertOn=true;setCustom(parseInt(document.getElementById('target').value));document.getElementById('startBtn').innerText='🟢 ON '+target+'% Sound: '+selectedRingtone.toUpperCase();}
 function stopAlert(){alertOn=false;stopShout();document.getElementById('startBtn').innerText='🟢 START ALERT';document.getElementById('stopBtn').classList.add('hidden')}
-function diagnosePhone(){let cEl=document.getElementById('diagCharger'),hEl=document.getElementById('diagHealth');document.getElementById('diagResult').classList.remove('hidden');if(!battery){cEl.innerText='❌ No battery info';return}cEl.innerHTML=battery.charging?'✅ Charging '+Math.round(battery.level*100)+'%':'⚠️ NOT charging';hEl.innerHTML='ℹ️ Health check - Keep charging';document.getElementById('diagAdvice').innerText='💡 Close apps - 0789313670';}
+function diagnosePhone(){let cEl=document.getElementById('diagCharger'),hEl=document.getElementById('diagAdvice');document.getElementById('diagResult').classList.remove('hidden');if(!battery){cEl.innerText='❌ No battery info';return}cEl.innerHTML=battery.charging?'✅ Charging '+Math.round(battery.level*100)+'%':'⚠️ NOT charging';hEl.innerText='💡 Close apps - 0789313670';}
 let saved=localStorage.getItem('mzansi_current_user');if(saved){window.currentUser=saved;checkExpiry();}
 </script>
 </body>
