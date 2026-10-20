@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mzansi Battery - Secure - 0789313670</title>
+<title>Mzansi AI Battery Doctor - 0789313670</title>
+<link rel="icon" href="icon.png">
 <style>
 body{margin:0;background:#000;color:#fff;font-family:Arial;text-align:center;padding:12px;transition:background 0.3s}
 .card{background:#1a1a1a;border-radius:16px;padding:14px;margin:10px 0;border:2px solid #333}
@@ -11,186 +12,109 @@ input,select{width:100%;padding:12px;border-radius:10px;background:#000;color:#f
 .gold{background:#FFD700;color:#000} .green{background:#00FF00;color:#000} .red{background:#FF0000;color:#fff} .grey{background:#333;color:#fff}
 .whatsapp{background:#25D366;color:#fff} .percent{font-size:70px;font-weight:900;color:#00FF00} .hidden{display:none}
 .police-red{background:#FF0000 !important} .police-blue{background:#0000FF !important}
-.ringtone{border:2px solid #555;border-radius:12px;padding:12px;margin:8px 0;cursor:pointer;text-align:left} .ringtone.active{border-color:#FFD700;background:#2a2a00}
+.ringtone{border:2px solid #555;border-radius:12px;padding:10px;margin:8px 0;cursor:pointer;text-align:left} .ringtone.active{border-color:#FFD700;background:#2a2a00}
 .qBox{background:#000;border-radius:10px;padding:10px;margin:8px 0;border:1px solid #444;text-align:left}
+.logo{width:90px;height:90px;border-radius:20px;border:3px solid #FFD700;box-shadow:0 0 15px #FFD700}
 </style>
 </head>
 <body id="body">
+
 <div id="authScreen">
-<h1 style="color:#FFD700">🇿🇦 MZANSI BATTERY</h1><p style="font-size:11px;color:#aaa">0789313670 - Secure Login - R20/R200</p>
-
-<div class="card" id="regBox">
-<h3 style="color:#FFD700">📝 REGISTER - SECURE</h3>
-<input id="regName" placeholder="Full Name e.g. Thabo">
-<input id="regWA" placeholder="WhatsApp e.g. 0789313670" type="tel">
-<input id="regPin" placeholder="Create 4-digit PIN e.g. 1234" type="password" maxlength="4">
-
-<div class="qBox">
-<h4 style="color:#FFD700;margin:5px">🔐 Security Questions - For Forgot PIN</h4>
-<p style="font-size:11px;color:#aaa">Choose 2 questions - Remember answers to reset PIN</p>
-
-<label style="font-size:11px;color:#aaa">Question 1:</label>
-<select id="secQ1">
-<option value="pet">What is your pet's name?</option>
-<option value="school">What primary school did you go to?</option>
-<option value="mother">What is your mother's maiden name?</option>
-<option value="town">What town were you born in?</option>
-<option value="food">What is your favorite food?</option>
-<option value="team">What is your favorite soccer team?</option>
-</select>
-<input id="secA1" placeholder="Answer 1 e.g. Milo">
-
-<label style="font-size:11px;color:#aaa">Question 2:</label>
-<select id="secQ2">
-<option value="school">What primary school did you go to?</option>
-<option value="pet">What is your pet's name?</option>
-<option value="mother">What is your mother's maiden name?</option>
-<option value="town">What town were you born in?</option>
-<option value="food">What is your favorite food?</option>
-<option value="team">What is your favorite soccer team?</option>
-</select>
-<input id="secA2" placeholder="Answer 2 e.g. Kaizer Chiefs">
+<div style="margin:10px">
+<img src="icon.png" class="logo" onerror="this.src='logo_full.png'">
+<h1 style="color:#FFD700;margin:8px 0 0">MZANSI AI</h1>
+<h2 style="color:#fff;margin:0;font-size:18px">BATTERY DOCTOR</h2>
+<p style="color:#25D366;font-size:12px;font-weight:900">💬 0789313670 - Secure - R20/R200</p>
 </div>
 
-<button class="btn gold" onclick="doRegister()">✅ REGISTER SECURELY</button>
+<div class="card" id="regBox">
+<h3 style="color:#FFD700">📝 REGISTER</h3>
+<input id="regName" placeholder="Full Name"><input id="regWA" placeholder="WhatsApp 0789313670" type="tel"><input id="regPin" placeholder="4-digit PIN" type="password" maxlength="4">
+<div class="qBox"><h4 style="color:#FFD700;margin:5px">🔐 Security Questions - For Forgot PIN</h4>
+<select id="secQ1"><option value="pet">Pet name?</option><option value="school">Primary school?</option><option value="mother">Mother name?</option><option value="town">Born town?</option><option value="food">Favorite food?</option><option value="team">Soccer team?</option></select><input id="secA1" placeholder="Answer 1">
+<select id="secQ2"><option value="school">Primary school?</option><option value="pet">Pet name?</option><option value="mother">Mother name?</option><option value="town">Born town?</option><option value="food">Favorite food?</option><option value="team">Soccer team?</option></select><input id="secA2" placeholder="Answer 2"></div>
+<button class="btn gold" onclick="doRegister()">REGISTER</button>
 <p><a href="#" onclick="showLogin()" style="color:#FFD700;font-size:12px">Have account? LOGIN</a></p>
 </div>
 
 <div class="card hidden" id="logBox">
-<h3 style="color:#FFD700">🔐 LOGIN</h3>
-<input id="logWA" placeholder="WhatsApp" type="tel">
-<input id="logPin" placeholder="PIN" type="password" maxlength="4">
-<button class="btn green" onclick="doLogin()">LOGIN</button>
-<p><a href="#" onclick="showForgot()" style="color:#FF6B6B;font-size:12px;font-weight:900">😰 Forgot PIN? Click here</a></p>
-<p><a href="#" onclick="showReg()" style="color:#FFD700;font-size:12px">New? REGISTER</a></p>
+<h3>🔐 LOGIN</h3><input id="logWA" placeholder="WhatsApp" type="tel"><input id="logPin" placeholder="PIN" type="password" maxlength="4"><button class="btn green" onclick="doLogin()">LOGIN</button>
+<p><a href="#" onclick="showForgot()" style="color:#FF6B6B;font-weight:900">😰 Forgot PIN?</a></p><p><a href="#" onclick="showReg()" style="color:#FFD700;font-size:12px">New? REGISTER</a></p>
 </div>
 
 <div class="card hidden" id="forgotBox">
-<h3 style="color:#FF6B6B">🔓 FORGOT PIN - Reset</h3>
-<input id="forWA" placeholder="Enter your WhatsApp" type="tel">
-<button class="btn grey" onclick="loadSecurity()" style="font-size:11px">LOAD MY SECURITY QUESTIONS</button>
-
-<div id="forgotQ" class="hidden">
-<p id="fQ1" style="color:#FFD700;font-weight:900;text-align:left"></p>
-<input id="fA1" placeholder="Answer 1">
-<p id="fQ2" style="color:#FFD700;font-weight:900;text-align:left"></p>
-<input id="fA2" placeholder="Answer 2">
-<input id="newPin" placeholder="New PIN e.g. 1234" type="password" maxlength="4">
-<button class="btn gold" onclick="resetPin()">🔓 RESET PIN</button>
-<p id="forgotMsg" style="font-size:12px"></p>
-</div>
-<p><a href="#" onclick="showLogin()" style="color:#FFD700;font-size:12px">Back to LOGIN</a></p>
+<h3 style="color:#FF6B6B">🔓 FORGOT PIN</h3><input id="forWA" placeholder="WhatsApp" type="tel"><button class="btn grey" onclick="loadSecurity()">LOAD QUESTIONS</button>
+<div id="forgotQ" class="hidden"><p id="fQ1" style="color:#FFD700;font-weight:900;text-align:left"></p><input id="fA1" placeholder="Answer 1"><p id="fQ2" style="color:#FFD700;font-weight:900;text-align:left"></p><input id="fA2" placeholder="Answer 2"><input id="newPin" placeholder="New PIN" type="password" maxlength="4"><button class="btn gold" onclick="resetPin()">RESET PIN</button><p id="forgotMsg"></p></div>
+<p><a href="#" onclick="showLogin()" style="color:#FFD700">Back to LOGIN</a></p>
 </div>
 
-<div class="card hidden" id="vouBox">
-<h3 style="color:#FFD700">🎟️ ENTER VOUCHER</h3><p style="font-size:11px;color:#00FF00">R20=30d | R200=365d | FREE=7d</p><input id="vouInput" placeholder="Type R20" style="border-color:#FFD700;border-width:3px;text-align:center;font-weight:900"><button class="btn gold" onclick="checkVoucher()">✅ ACTIVATE</button><p id="vouMsg"></p>
-<a href="https://wa.me/27789313670?text=Hi%20I%20forgot%20PIN%20and%20need%20help" target="_blank"><button class="btn whatsapp" style="font-size:11px">💬 WHATSAPP 0789313670 FOR HELP</button></a>
-</div>
+<div class="card hidden" id="vouBox"><h3 style="color:#FFD700">🎟️ ENTER VOUCHER</h3><p style="font-size:11px;color:#00FF00">R20=30d | R200=365d | FREE=7d</p><input id="vouInput" placeholder="Type R20" style="border-color:#FFD700;border-width:3px;text-align:center;font-weight:900"><button class="btn gold" onclick="checkVoucher()">✅ ACTIVATE</button><p id="vouMsg"></p><a href="https://wa.me/27789313670?text=Hi%20Need%20voucher" target="_blank"><button class="btn whatsapp">💬 WHATSAPP 0789313670 TO BUY</button></a></div>
 </div>
 
 <div id="appScreen" class="hidden">
-<h2 style="color:#FFD700">🇿🇦 MZANSI AI</h2><p id="welcome" style="color:#FFD700;font-size:13px"></p><p id="expiry" style="font-size:11px"></p>
+<div style="display:flex;align-items:center;justify-content:center;gap:10px;margin:8px"><img src="icon.png" style="width:50px;height:50px;border-radius:12px;border:2px solid #FFD700" onerror="this.style.display='none'"><div style="text-align:left"><h2 style="color:#FFD700;margin:0;font-size:16px">MZANSI AI BATTERY DOCTOR</h2><p style="color:#25D366;margin:0;font-size:11px">0789313670</p></div></div>
+<p id="welcome" style="color:#FFD700;font-size:13px"></p><p id="expiry" style="font-size:11px"></p>
 <div class="card" id="main"><div class="percent" id="pct">--%</div><div id="stat">Reading...</div><div id="zuluStat" style="color:#FFD700;font-weight:900"></div></div>
 <div class="card"><input type="range" id="slider" min="10" max="100" value="80" oninput="setCustom(this.value)" style="width:100%;accent-color:#FFD700"><div style="display:flex;gap:8px"><input id="target" type="number" value="80" style="width:50%;color:#FFD700;font-weight:900;text-align:center"><div id="show" style="width:50%;background:#FFD700;color:#000;border-radius:10px;display:flex;align-items:center;justify-content:center;font-weight:900">80%</div></div></div>
 
 <div class="card" style="border-color:#FFD700;background:#1a1a00">
-<h4 style="color:#FFD700">🔊 CUSTOM RINGTONE</h4>
-<div onclick="selectRingtone('zulu')" id="ringZulu" class="ringtone active"><b>🗣️ ZULU VOICE</b> <button class="btn" style="background:#333;color:#fff;font-size:11px;padding:5px;width:auto" onclick="event.stopPropagation();testSound('zulu')">▶️ TEST</button></div>
-<div onclick="selectRingtone('beep')" id="ringBeep" class="ringtone"><b>🔔 BEEP</b> <button class="btn" style="background:#333;color:#fff;font-size:11px;padding:5px;width:auto" onclick="event.stopPropagation();testSound('beep')">▶️ TEST</button></div>
-<div id="ringCustom" class="ringtone" style="border-color:#FF0000;background:#2a0000">
-<b>🎤 RECORD YOUR VOICE - NEW!</b>
-<div style="background:#000;border-radius:10px;padding:8px;margin:6px 0"><p id="recStatus" style="font-size:11px;color:#FFD700">Click record and speak</p><button class="btn red" id="recBtn" onclick="toggleRecord()">🎤 START RECORDING</button><div style="display:flex;gap:6px"><button class="btn" style="background:#333;color:#fff;font-size:10px;flex:1" onclick="playRecorded()">▶️ PLAY</button><button class="btn" style="background:#333;color:#fff;font-size:10px;flex:1" onclick="deleteRecorded()">🗑️ DELETE</button></div><p id="recTime" style="font-size:10px;color:#aaa"></p></div>
+<h4 style="color:#FFD700">🔊 CUSTOM RINGTONE WHEN FULL</h4>
+<div onclick="selectRingtone('zulu')" id="ringZulu" class="ringtone active"><b>🗣️ ZULU VOICE</b> <button class="btn" style="background:#333;color:#fff;font-size:10px;padding:5px;width:auto" onclick="event.stopPropagation();testSound('zulu')">TEST</button></div>
+<div onclick="selectRingtone('beep')" id="ringBeep" class="ringtone"><b>🔔 BEEP</b> <button class="btn" style="background:#333;color:#fff;font-size:10px;padding:5px;width:auto" onclick="event.stopPropagation();testSound('beep')">TEST</button></div>
+<div onclick="selectRingtone('siren')" id="ringSiren" class="ringtone"><b>🚨 SIREN</b> <button class="btn" style="background:#333;color:#fff;font-size:10px;padding:5px;width:auto" onclick="event.stopPropagation();testSound('siren')">TEST</button></div>
+<div id="ringCustom" class="ringtone" style="border-color:#FF0000;background:#2a0000"><b>🎤 RECORD YOUR VOICE + UPLOAD SONG</b>
+<div style="background:#000;border-radius:10px;padding:8px;margin:6px 0"><p id="recStatus" style="font-size:11px;color:#FFD700">Record your voice as alarm</p><button class="btn red" id="recBtn" onclick="toggleRecord()">🎤 START RECORDING</button><div style="display:flex;gap:6px"><button class="btn" style="background:#333;color:#fff;font-size:10px;flex:1" onclick="playRecorded()">PLAY</button><button class="btn" style="background:#333;color:#fff;font-size:10px;flex:1" onclick="deleteRecorded()">DELETE</button></div><p id="recTime" style="font-size:10px"></p></div>
 <div style="background:#000;border-radius:10px;padding:8px;margin:6px 0"><small>Or upload MP3:</small><input type="file" id="customFile" accept="audio/*" onchange="handleCustomFile(this)"><p id="customName" style="font-size:11px;color:#00FF00"></p></div>
-<button class="btn gold" onclick="selectRingtone('custom')" style="font-size:11px">✅ USE MY VOICE / SONG</button>
-</div>
+<button class="btn gold" onclick="selectRingtone('custom')" style="font-size:11px">✅ USE MY VOICE / SONG</button></div>
 <p id="selectedRing" style="color:#FFD700;font-weight:900;font-size:11px">Selected: ZULU VOICE</p>
 </div>
 
 <div class="card"><button class="btn green" id="startBtn" onclick="startAlert()">🟢 START ALERT</button><button class="btn red hidden" id="stopBtn" onclick="stopAlert()">🔴 STOP</button></div>
-<div class="card"><h4 style="color:#FFD700">🔍 DIAGNOSE</h4><button class="btn gold" onclick="diagnosePhone()" id="diagBtn">🩺 DIAGNOSE</button><div id="diagResult" class="hidden" style="text-align:left;background:#000;padding:10px;border-radius:10px;font-size:12px"><p id="diagCharger"></p><p id="diagAdvice" style="color:#FFD700;font-weight:900"></p></div></div>
-<div class="card"><button class="btn grey" onclick="showSecurityEdit()" style="font-size:11px">🔐 CHANGE PIN / SECURITY QUESTIONS</button><a href="https://wa.me/27789313670" target="_blank"><button class="btn whatsapp">💬 0789313670</button></a><button class="btn grey" onclick="logout()" style="font-size:11px">LOGOUT</button></div>
+<div class="card"><h4 style="color:#FFD700">🔍 DIAGNOSE</h4><button class="btn gold" onclick="diagnosePhone()" id="diagBtn">🩺 DIAGNOSE CHARGER</button><div id="diagResult" class="hidden" style="text-align:left;background:#000;padding:10px;border-radius:10px;font-size:12px"><p id="diagCharger"></p><p id="diagAdvice" style="color:#FFD700;font-weight:900"></p></div></div>
+<div class="card"><button class="btn grey" onclick="showSecurityEdit()" style="font-size:11px">🔐 CHANGE PIN / SECURITY</button><a href="https://wa.me/27789313670" target="_blank"><button class="btn whatsapp">💬 0789313670 CUSTOMER SERVICE</button></a><button class="btn grey" onclick="logout()" style="font-size:11px">LOGOUT</button></div>
 </div>
 
-<div id="editSecScreen" class="hidden">
-<div class="card"><h3 style="color:#FFD700">🔐 CHANGE SECURITY</h3><p style="font-size:11px;color:#aaa">Change PIN and security questions</p><input id="editOldPin" placeholder="Old PIN" type="password"><input id="editNewPin" placeholder="New PIN" type="password" maxlength="4"><div class="qBox"><select id="editQ1"><option value="pet">Pet name?</option><option value="school">Primary school?</option><option value="mother">Mother's name?</option><option value="town">Born town?</option><option value="food">Favorite food?</option><option value="team">Soccer team?</option></select><input id="editA1" placeholder="New Answer 1"><select id="editQ2"><option value="school">Primary school?</option><option value="pet">Pet name?</option><option value="mother">Mother's name?</option><option value="town">Born town?</option><option value="food">Favorite food?</option><option value="team">Soccer team?</option></select><input id="editA2" placeholder="New Answer 2"></div><button class="btn gold" onclick="saveSecurityEdit()">SAVE NEW PIN & QUESTIONS</button><button class="btn grey" onclick="hideSecurityEdit()">BACK</button><p id="editMsg" style="font-size:12px"></p></div>
-</div>
+<div id="editSecScreen" class="hidden"><div class="card"><h3 style="color:#FFD700">🔐 CHANGE SECURITY</h3><input id="editOldPin" placeholder="Old PIN" type="password"><input id="editNewPin" placeholder="New PIN" type="password" maxlength="4"><div class="qBox"><select id="editQ1"><option value="pet">Pet name?</option><option value="school">Primary school?</option><option value="mother">Mother name?</option><option value="town">Born town?</option><option value="food">Favorite food?</option><option value="team">Soccer team?</option></select><input id="editA1" placeholder="New Answer 1"><select id="editQ2"><option value="school">Primary school?</option><option value="pet">Pet name?</option><option value="mother">Mother name?</option><option value="town">Born town?</option><option value="food">Favorite food?</option><option value="team">Soccer team?</option></select><input id="editA2" placeholder="New Answer 2"></div><button class="btn gold" onclick="saveSecurityEdit()">SAVE</button><button class="btn grey" onclick="hideSecurityEdit()">BACK</button><p id="editMsg"></p></div></div>
 
 <audio id="audioPlayer" loop></audio><audio id="recordedAudio"></audio>
 
 <script>
 function saveLocal(wa,d){let l=JSON.parse(localStorage.getItem('mzansi_users')||'{}');l[wa]=d;localStorage.setItem('mzansi_users',JSON.stringify(l));localStorage.setItem('mzansi_current_user',wa);}
 function getLocal(wa){let l=JSON.parse(localStorage.getItem('mzansi_users')||'{}');return l[wa];}
-function qText(key){let m={pet:"What is your pet's name?",school:"What primary school did you go to?",mother:"What is your mother's maiden name?",town:"What town were you born in?",food:"What is your favorite food?",team:"What is your favorite soccer team?"};return m[key]||key;}
+function qText(k){let m={pet:"What is your pet's name?",school:"What primary school did you go to?",mother:"What is your mother's maiden name?",town:"What town were you born in?",food:"What is your favorite food?",team:"What is your favorite soccer team?"};return m[k]||k;}
 function showReg(){document.getElementById('regBox').classList.remove('hidden');document.getElementById('logBox').classList.add('hidden');document.getElementById('forgotBox').classList.add('hidden');document.getElementById('vouBox').classList.add('hidden');document.getElementById('editSecScreen').classList.add('hidden');}
-function showLogin(){document.getElementById('regBox').classList.add('hidden');document.getElementById('logBox').classList.remove('hidden');document.getElementById('forgotBox').classList.add('hidden');document.getElementById('vouBox').classList.add('hidden');document.getElementById('editSecScreen').classList.add('hidden');}
+function showLogin(){document.getElementById('regBox').classList.add('hidden');document.getElementById('logBox').classList.remove('hidden');document.getElementById('forgotBox').classList.add('hidden');document.getElementById('vouBox').classList.add('hidden');}
 function showForgot(){document.getElementById('regBox').classList.add('hidden');document.getElementById('logBox').classList.add('hidden');document.getElementById('forgotBox').classList.remove('hidden');document.getElementById('vouBox').classList.add('hidden');}
 function showVou(){document.getElementById('regBox').classList.add('hidden');document.getElementById('logBox').classList.add('hidden');document.getElementById('forgotBox').classList.add('hidden');document.getElementById('vouBox').classList.remove('hidden');}
-function doRegister(){
- let n=document.getElementById('regName').value.trim(),wa=document.getElementById('regWA').value.trim().replace(/\s/g,''),pin=document.getElementById('regPin').value.trim();
- let q1=document.getElementById('secQ1').value,a1=document.getElementById('secA1').value.trim();
- let q2=document.getElementById('secQ2').value,a2=document.getElementById('secA2').value.trim();
- if(!n||!wa||pin.length<2){alert('Fill Name, WhatsApp, PIN');return}
- if(!a1||!a2){alert('Please fill security answers - Needed if you forget PIN');return}
- if(q1===q2){alert('Choose 2 different security questions');return}
- let d={name:n,pin,wa,created:Date.now(),expiry:0,voucher:'',package:'',secQ1:q1,secA1:a1.toLowerCase(),secQ2:q2,secA2:a2.toLowerCase()};
- saveLocal(wa,d);window.currentUser=wa;showVou();document.getElementById('vouMsg').innerHTML='<span style="color:#00FF00">✅ Registered! Type R20 to activate</span>';
-}
-function doLogin(){let wa=document.getElementById('logWA').value.trim().replace(/\s/g,''),pin=document.getElementById('logPin').value.trim();let local=getLocal(wa);if(local&&local.pin===pin){window.currentUser=wa;checkExpiry();}else if(local){alert('Wrong PIN - Click Forgot PIN if you forgot');}else alert('Not registered');}
-function loadSecurity(){
- let wa=document.getElementById('forWA').value.trim().replace(/\s/g,'');
- if(!wa){alert('Enter WhatsApp first');return}
- let local=getLocal(wa);
- if(!local){alert('No account for '+wa);return}
- if(!local.secQ1){alert('Old account - No security questions. WhatsApp 0789313670 to reset');return}
- document.getElementById('fQ1').innerText='Q1: '+qText(local.secQ1);
- document.getElementById('fQ2').innerText='Q2: '+qText(local.secQ2);
- document.getElementById('forgotQ').classList.remove('hidden');
- window.forgotWA=wa;
-}
-function resetPin(){
- let wa=window.forgotWA;
- if(!wa){alert('Load security first');return}
- let local=getLocal(wa);
- let a1=document.getElementById('fA1').value.trim().toLowerCase();
- let a2=document.getElementById('fA2').value.trim().toLowerCase();
- let newPin=document.getElementById('newPin').value.trim();
- if(!a1||!a2||!newPin){alert('Fill answers and new PIN');return}
- if(a1===local.secA1 && a2===local.secA2){
-  local.pin=newPin;
-  saveLocal(wa,local);
-  document.getElementById('forgotMsg').innerHTML='<span style="color:#00FF00">✅ PIN RESET! New PIN: '+newPin+' - Go login</span>';
-  setTimeout(()=>showLogin(),1500);
- } else {
-  document.getElementById('forgotMsg').innerHTML='<span style="color:#FF0000">❌ Wrong answers - Try again or WhatsApp 0789313670</span>';
- }
-}
+function doRegister(){let n=document.getElementById('regName').value.trim(),wa=document.getElementById('regWA').value.trim().replace(/\s/g,''),pin=document.getElementById('regPin').value.trim();let q1=document.getElementById('secQ1').value,a1=document.getElementById('secA1').value.trim();let q2=document.getElementById('secQ2').value,a2=document.getElementById('secA2').value.trim();if(!n||!wa||pin.length<2){alert('Fill all');return}if(!a1||!a2){alert('Fill security answers');return}if(q1===q2){alert('Choose different questions');return}let d={name:n,pin,wa,created:Date.now(),expiry:0,voucher:'',secQ1:q1,secA1:a1.toLowerCase(),secQ2:q2,secA2:a2.toLowerCase()};saveLocal(wa,d);window.currentUser=wa;showVou();}
+function doLogin(){let wa=document.getElementById('logWA').value.trim().replace(/\s/g,''),pin=document.getElementById('logPin').value.trim();let local=getLocal(wa);if(local&&local.pin===pin){window.currentUser=wa;checkExpiry();}else alert('Wrong PIN - Try Forgot PIN');}
+function loadSecurity(){let wa=document.getElementById('forWA').value.trim().replace(/\s/g,'');if(!wa){alert('Enter WhatsApp');return}let local=getLocal(wa);if(!local||!local.secQ1){alert('No account or old account - WhatsApp 0789313670');return}document.getElementById('fQ1').innerText='Q1: '+qText(local.secQ1);document.getElementById('fQ2').innerText='Q2: '+qText(local.secQ2);document.getElementById('forgotQ').classList.remove('hidden');window.forgotWA=wa;}
+function resetPin(){let wa=window.forgotWA;let local=getLocal(wa);let a1=document.getElementById('fA1').value.trim().toLowerCase(),a2=document.getElementById('fA2').value.trim().toLowerCase(),newPin=document.getElementById('newPin').value.trim();if(!a1||!a2||!newPin){alert('Fill all');return}if(a1===local.secA1&&a2===local.secA2){local.pin=newPin;saveLocal(wa,local);document.getElementById('forgotMsg').innerHTML='<span style="color:#00FF00">✅ PIN RESET to '+newPin+'</span>';setTimeout(()=>showLogin(),1200);}else document.getElementById('forgotMsg').innerHTML='<span style="color:#FF0000">❌ Wrong answers</span>';}
 function checkExpiry(){let u=getLocal(window.currentUser);if(!u){showReg();return}if(u.expiry&&Date.now()<u.expiry){openApp(u);}else{lockApp(u);}}
 function lockApp(u){document.getElementById('authScreen').classList.remove('hidden');document.getElementById('appScreen').classList.add('hidden');document.getElementById('editSecScreen').classList.add('hidden');showVou();}
-function checkVoucher(){let raw=document.getElementById('vouInput').value.trim(),code=raw.toUpperCase();if(!code){alert('Type R20');return}let days=code.includes('200')||code.includes('YEAR')?365:code==='FREE'||code==='TEST'?7:30;let label=days>100?'1 YEAR R200':days===7?'7 Days':'1 MONTH R20';let exp=Date.now()+days*86400000;let local=getLocal(window.currentUser);local.expiry=exp;local.voucher=raw;local.package=days>100?'year':'month';local.packageLabel=label;saveLocal(window.currentUser,local);document.getElementById('vouMsg').innerHTML=`<span style="color:#00FF00">✅ ${label} ${days} days</span>`;setTimeout(()=>openApp(local),800);}
+function checkVoucher(){let raw=document.getElementById('vouInput').value.trim(),code=raw.toUpperCase();if(!code){alert('Type R20');return}let days=code.includes('200')||code.includes('YEAR')?365:code==='FREE'||code==='TEST'?7:30;let label=days>100?'1 YEAR R200':days===7?'7 Days':'1 MONTH R20';let exp=Date.now()+days*86400000;let local=getLocal(window.currentUser);local.expiry=exp;local.voucher=raw;local.package=days>100?'year':'month';local.packageLabel=label;saveLocal(window.currentUser,local);document.getElementById('vouMsg').innerHTML=`<span style="color:#00FF00">✅ ${label}</span>`;setTimeout(()=>openApp(local),800);}
 function openApp(u){document.getElementById('authScreen').classList.add('hidden');document.getElementById('appScreen').classList.remove('hidden');document.getElementById('editSecScreen').classList.add('hidden');document.getElementById('welcome').innerText='Sawubona '+(u.name||'User')+' - '+u.packageLabel;let days=Math.ceil((u.expiry-Date.now())/86400000);document.getElementById('expiry').innerHTML=`<span style="color:${days<=3?'#FF0000':'#00FF00'}">${days} days left</span>`;initBattery();loadRingtone();}
-function showSecurityEdit(){document.getElementById('appScreen').classList.add('hidden');document.getElementById('editSecScreen').classList.remove('hidden');let u=getLocal(window.currentUser);if(u){document.getElementById('editQ1').value=u.secQ1||'pet';document.getElementById('editA1').value='';document.getElementById('editQ2').value=u.secQ2||'school';document.getElementById('editA2').value='';}}
+function showSecurityEdit(){document.getElementById('appScreen').classList.add('hidden');document.getElementById('editSecScreen').classList.remove('hidden');}
 function hideSecurityEdit(){document.getElementById('editSecScreen').classList.add('hidden');document.getElementById('appScreen').classList.remove('hidden');}
-function saveSecurityEdit(){let u=getLocal(window.currentUser);let oldPin=document.getElementById('editOldPin').value.trim();let newPin=document.getElementById('editNewPin').value.trim();let q1=document.getElementById('editQ1').value,a1=document.getElementById('editA1').value.trim().toLowerCase();let q2=document.getElementById('editQ2').value,a2=document.getElementById('editA2').value.trim().toLowerCase();if(u.pin!==oldPin){document.getElementById('editMsg').innerHTML='<span style="color:#FF0000">❌ Wrong old PIN</span>';return}if(newPin){u.pin=newPin;}if(a1&&a2){if(q1===q2){document.getElementById('editMsg').innerHTML='<span style="color:#FF0000">Choose different questions</span>';return}u.secQ1=q1;u.secA1=a1;u.secQ2=q2;u.secA2=a2;}saveLocal(window.currentUser,u);document.getElementById('editMsg').innerHTML='<span style="color:#00FF00">✅ Saved! New PIN: '+(newPin||oldPin)+'</span>';setTimeout(hideSecurityEdit,1200);}
+function saveSecurityEdit(){let u=getLocal(window.currentUser);let oldPin=document.getElementById('editOldPin').value.trim(),newPin=document.getElementById('editNewPin').value.trim(),q1=document.getElementById('editQ1').value,a1=document.getElementById('editA1').value.trim().toLowerCase(),q2=document.getElementById('editQ2').value,a2=document.getElementById('editA2').value.trim().toLowerCase();if(u.pin!==oldPin){document.getElementById('editMsg').innerHTML='<span style="color:#FF0000">Wrong old PIN</span>';return}if(newPin)u.pin=newPin;if(a1&&a2){if(q1===q2){document.getElementById('editMsg').innerHTML='<span style="color:#FF0000">Different questions</span>';return}u.secQ1=q1;u.secA1=a1;u.secQ2=q2;u.secA2=a2;}saveLocal(window.currentUser,u);document.getElementById('editMsg').innerHTML='<span style="color:#00FF00">✅ Saved!</span>';setTimeout(hideSecurityEdit,1000);}
 function logout(){localStorage.removeItem('mzansi_current_user');location.reload()}
-
-// Ringtone + Record
 let selectedRingtone='zulu',customAudioURL=null,mediaRecorder=null,recordedChunks=[],isRecording=false,recordTimer=null,recordSeconds=0;
-function loadRingtone(){selectedRingtone=localStorage.getItem('mzansi_ringtone')||'zulu';customAudioURL=localStorage.getItem('mzansi_custom_url');let recorded=localStorage.getItem('mzansi_recorded_base64');if(recorded){document.getElementById('recStatus').innerHTML='✅ Voice recorded - Will play when full!';document.getElementById('recStatus').style.color='#00FF00';}selectRingtone(selectedRingtone);}
-function selectRingtone(type){selectedRingtone=type;localStorage.setItem('mzansi_ringtone',type);document.querySelectorAll('.ringtone').forEach(e=>e.classList.remove('active'));let el=document.getElementById('ring'+type.charAt(0).toUpperCase()+type.slice(1));if(el)el.classList.add('active');document.getElementById('selectedRing').innerText='Selected: '+type.toUpperCase();stopTest();}
-async function toggleRecord(){let btn=document.getElementById('recBtn'),status=document.getElementById('recStatus');if(!isRecording){try{let stream=await navigator.mediaDevices.getUserMedia({audio:true});mediaRecorder=new MediaRecorder(stream);recordedChunks=[];mediaRecorder.ondataavailable=e=>{if(e.data.size>0)recordedChunks.push(e.data);};mediaRecorder.onstop=()=>{let blob=new Blob(recordedChunks,{type:'audio/webm'});let url=URL.createObjectURL(blob);customAudioURL=url;localStorage.setItem('mzansi_custom_url',url);let reader=new FileReader();reader.onload=()=>{try{localStorage.setItem('mzansi_recorded_base64',reader.result);localStorage.setItem('mzansi_custom_name','My Voice');}catch(e){}};reader.readAsDataURL(blob);status.innerHTML='✅ Recorded! Click USE MY VOICE';status.style.color='#00FF00';selectRingtone('custom');};mediaRecorder.start();isRecording=true;recordSeconds=0;btn.innerText='🔴 STOP - Speak now!';btn.classList.add('record-btn');status.innerHTML='🔴 Recording... Say: Battery full!';status.style.color='#FF0000';recordTimer=setInterval(()=>{recordSeconds++;document.getElementById('recTime').innerText=`Recording: ${recordSeconds}s Max 10s`;if(recordSeconds>=10)toggleRecord();},1000);}catch(err){alert('Mic blocked - Allow mic or upload MP3');}}else{mediaRecorder.stop();mediaRecorder.stream.getTracks().forEach(t=>t.stop());isRecording=false;btn.innerText='🎤 START RECORDING AGAIN';btn.classList.remove('record-btn');clearInterval(recordTimer);}}
-function playRecorded(){let b64=localStorage.getItem('mzansi_recorded_base64');let url=localStorage.getItem('mzansi_custom_url');let audio=document.getElementById('recordedAudio');if(b64||url){audio.src=b64||url;audio.play();}else alert('No recording - Record first');}
-function deleteRecorded(){localStorage.removeItem('mzansi_recorded_base64');localStorage.removeItem('mzansi_custom_url');customAudioURL=null;document.getElementById('recStatus').innerText='Deleted - Record new voice';selectRingtone('zulu');}
-function handleCustomFile(input){if(input.files&&input.files[0]){let file=input.files[0];let url=URL.createObjectURL(file);customAudioURL=url;localStorage.setItem('mzansi_custom_url',url);let reader=new FileReader();reader.onload=()=>{try{localStorage.setItem('mzansi_recorded_base64',reader.result);localStorage.setItem('mzansi_custom_name',file.name);}catch(e){}};reader.readAsDataURL(file);document.getElementById('customName').innerText='✅ Song: '+file.name;selectRingtone('custom');}}
-let audioCtx=null;function playBeep(f,d,t){if(!audioCtx)audioCtx=new (window.AudioContext||window.webkitAudioContext)();let o=audioCtx.createOscillator(),g=audioCtx.createGain();o.type=t||'sine';o.frequency.value=f;o.connect(g);g.connect(audioCtx.destination);g.gain.setValueAtTime(0.8,audioCtx.currentTime);g.gain.exponentialRampToValueAtTime(0.01,audioCtx.currentTime+d);o.start();o.stop(audioCtx.currentTime+d);}
-let testInterval=null;function testSound(type){stopTest();let audio=document.getElementById('audioPlayer');if(type==='zulu'){if('speechSynthesis' in window){let u=new SpeechSynthesisUtterance('Mntanami battery igcwele');u.lang='zu-ZA';speechSynthesis.speak(u);}testInterval=setInterval(()=>playBeep(800,0.3),500);setTimeout(stopTest,3000);}else if(type==='beep'){testInterval=setInterval(()=>playBeep(1000,0.4,'square'),400);setTimeout(stopTest,3000);}else if(type==='siren'){let up=true,f=400;testInterval=setInterval(()=>{playBeep(f,0.15,'sawtooth');f=up?f+80:f-80;if(f>900)up=false;if(f<400)up=true;},120);setTimeout(stopTest,4000);}else if(type==='custom'){let b64=localStorage.getItem('mzansi_recorded_base64');if(b64||customAudioURL){audio.src=b64||customAudioURL;audio.play();setTimeout(()=>audio.pause(),4000);}else alert('Record voice first');}}
+function loadRingtone(){selectedRingtone=localStorage.getItem('mzansi_ringtone')||'zulu';customAudioURL=localStorage.getItem('mzansi_custom_url');let rec=localStorage.getItem('mzansi_recorded_base64');if(rec){document.getElementById('recStatus').innerHTML='✅ Voice recorded!';document.getElementById('recStatus').style.color='#00FF00';}selectRingtone(selectedRingtone);}
+function selectRingtone(t){selectedRingtone=t;localStorage.setItem('mzansi_ringtone',t);document.querySelectorAll('.ringtone').forEach(e=>e.classList.remove('active'));let el=document.getElementById('ring'+t.charAt(0).toUpperCase()+t.slice(1));if(el)el.classList.add('active');document.getElementById('selectedRing').innerText='Selected: '+t.toUpperCase();stopTest();}
+async function toggleRecord(){let btn=document.getElementById('recBtn'),status=document.getElementById('recStatus');if(!isRecording){try{let stream=await navigator.mediaDevices.getUserMedia({audio:true});mediaRecorder=new MediaRecorder(stream);recordedChunks=[];mediaRecorder.ondataavailable=e=>{if(e.data.size>0)recordedChunks.push(e.data);};mediaRecorder.onstop=()=>{let blob=new Blob(recordedChunks,{type:'audio/webm'});let url=URL.createObjectURL(blob);customAudioURL=url;localStorage.setItem('mzansi_custom_url',url);let r=new FileReader();r.onload=()=>{try{localStorage.setItem('mzansi_recorded_base64',r.result);localStorage.setItem('mzansi_custom_name','My Voice');}catch(e){}};r.readAsDataURL(blob);status.innerHTML='✅ Recorded! Use my voice';status.style.color='#00FF00';selectRingtone('custom');};mediaRecorder.start();isRecording=true;recordSeconds=0;btn.innerText='🔴 STOP - Speak now!';status.innerHTML='🔴 Recording... Say Battery full!';status.style.color='#FF0000';recordTimer=setInterval(()=>{recordSeconds++;document.getElementById('recTime').innerText=`Recording: ${recordSeconds}s Max 10s`;if(recordSeconds>=10)toggleRecord();},1000);}catch(err){alert('Mic blocked - Allow mic');}}else{mediaRecorder.stop();mediaRecorder.stream.getTracks().forEach(t=>t.stop());isRecording=false;btn.innerText='🎤 START RECORDING AGAIN';clearInterval(recordTimer);}}
+function playRecorded(){let b64=localStorage.getItem('mzansi_recorded_base64');let url=localStorage.getItem('mzansi_custom_url');let audio=document.getElementById('recordedAudio');if(b64||url){audio.src=b64||url;audio.play();}else alert('No recording');}
+function deleteRecorded(){localStorage.removeItem('mzansi_recorded_base64');localStorage.removeItem('mzansi_custom_url');customAudioURL=null;document.getElementById('recStatus').innerText='Deleted - Record new';selectRingtone('zulu');}
+function handleCustomFile(i){if(i.files&&i.files[0]){let f=i.files[0];let u=URL.createObjectURL(f);customAudioURL=u;localStorage.setItem('mzansi_custom_url',u);let r=new FileReader();r.onload=()=>{try{localStorage.setItem('mzansi_recorded_base64',r.result);localStorage.setItem('mzansi_custom_name',f.name);}catch(e){}};r.readAsDataURL(f);document.getElementById('customName').innerText='✅ Song: '+f.name;selectRingtone('custom');}}
+let audioCtx=null;function playBeep(f,d,t){if(!audioCtx)audioCtx=new(window.AudioContext||window.webkitAudioContext)();let o=audioCtx.createOscillator(),g=audioCtx.createGain();o.type=t||'sine';o.frequency.value=f;o.connect(g);g.connect(audioCtx.destination);g.gain.setValueAtTime(0.8,audioCtx.currentTime);g.gain.exponentialRampToValueAtTime(0.01,audioCtx.currentTime+d);o.start();o.stop(audioCtx.currentTime+d);}
+let testInterval=null;function testSound(t){stopTest();let a=document.getElementById('audioPlayer');if(t==='zulu'){if('speechSynthesis' in window){let u=new SpeechSynthesisUtterance('Mntanami battery igcwele');u.lang='zu-ZA';speechSynthesis.speak(u);}testInterval=setInterval(()=>playBeep(800,0.3),500);setTimeout(stopTest,3000);}else if(t==='beep'){testInterval=setInterval(()=>playBeep(1000,0.4,'square'),400);setTimeout(stopTest,3000);}else if(t==='siren'){let up=true,f=400;testInterval=setInterval(()=>{playBeep(f,0.15,'sawtooth');f=up?f+80:f-80;if(f>900)up=false;if(f<400)up=true;},120);setTimeout(stopTest,4000);}else if(t==='custom'){let b64=localStorage.getItem('mzansi_recorded_base64');if(b64||customAudioURL){a.src=b64||customAudioURL;a.play();setTimeout(()=>a.pause(),4000);}else alert('Record voice first');}}
 function stopTest(){if(testInterval)clearInterval(testInterval);testInterval=null;if('speechSynthesis' in window)speechSynthesis.cancel();let a=document.getElementById('audioPlayer');a.pause();if(audioCtx){try{audioCtx.close();}catch(e){}audioCtx=null;}}
 let battery=null,target=80,alertOn=false,alarmLoop=null,flashLoop=null;
 function setCustom(v){target=parseInt(v);document.getElementById('target').value=target;document.getElementById('slider').value=target;document.getElementById('show').innerText=target+'%';localStorage.setItem('mzansi_target',target)}
 async function initBattery(){if('getBattery' in navigator){try{battery=await navigator.getBattery();battery.addEventListener('levelchange',upd);battery.addEventListener('chargingchange',upd);upd()}catch(e){}}target=parseInt(localStorage.getItem('mzansi_target')||'80');setCustom(target)}
 function upd(){if(!battery)return;let p=Math.round(battery.level*100);let pct=document.getElementById('pct');if(!alarmLoop)pct.innerText=p+'%';document.getElementById('stat').innerText=battery.charging?`⚡ ${p}% → Alert ${target}%`:`🔋 ${p}%`;if(alertOn&&battery.charging&&p>=target)shout();if(alertOn&&!battery.charging&&alarmLoop)stopShout();}
-function shout(){if(alarmLoop)return;let isRed=true,body=document.getElementById('body'),main=document.getElementById('main');flashLoop=setInterval(()=>{body.className=isRed?'police-red':'police-blue';main.className='card '+(isRed?'police-blue':'police-red');isRed=!isRed;if(navigator.vibrate)navigator.vibrate([300,100,300]);},200);document.getElementById('pct').innerText=target+'% FULL!';document.getElementById('zuluStat').innerText='🔊 Playing: '+selectedRingtone.toUpperCase();document.getElementById('stopBtn').classList.remove('hidden');document.getElementById('startBtn').innerText='🚨 UNPLUG! PLAYING!';if(selectedRingtone==='zulu'){alarmLoop=setInterval(()=>{if('speechSynthesis' in window){let u=new SpeechSynthesisUtterance('Mntanami battery igcwele khipha shaja manje');u.lang='zu-ZA';speechSynthesis.speak(u);}},2500);}else if(selectedRingtone==='beep'){alarmLoop=setInterval(()=>playBeep(1000,0.5,'square'),700);}else if(selectedRingtone==='siren'){let up=true,f=500;alarmLoop=setInterval(()=>{playBeep(f,0.2,'sawtooth');f=up?f+90:f-90;if(f>1000)up=false;if(f<400)up=true;},130);}else if(selectedRingtone==='custom'){let audio=document.getElementById('audioPlayer');let b64=localStorage.getItem('mzansi_recorded_base64');audio.src=b64||customAudioURL||'';audio.loop=true;audio.play();alarmLoop=setInterval(()=>{},1000);}}
-function stopShout(){document.getElementById('body').className='';document.getElementById('main').className='card';if(flashLoop)clearInterval(flashLoop);if(alarmLoop)clearInterval(alarmLoop);flashLoop=null;alarmLoop=null;if('speechSynthesis' in window)speechSynthesis.cancel();let audio=document.getElementById('audioPlayer');audio.pause();audio.loop=false;if(audioCtx){try{audioCtx.close();}catch(e){}audioCtx=null;}document.getElementById('zuluStat').innerText='';upd();}
-function startAlert(){alertOn=true;setCustom(parseInt(document.getElementById('target').value));document.getElementById('startBtn').innerText='🟢 ON '+target+'% Sound: '+selectedRingtone.toUpperCase();}
+function shout(){if(alarmLoop)return;let isRed=true,body=document.getElementById('body'),main=document.getElementById('main');flashLoop=setInterval(()=>{body.className=isRed?'police-red':'police-blue';main.className='card '+(isRed?'police-blue':'police-red');isRed=!isRed;if(navigator.vibrate)navigator.vibrate([300,100,300]);},200);document.getElementById('pct').innerText=target+'% FULL!';document.getElementById('zuluStat').innerText='🔊 '+selectedRingtone.toUpperCase();document.getElementById('stopBtn').classList.remove('hidden');document.getElementById('startBtn').innerText='🚨 UNPLUG!';if(selectedRingtone==='zulu'){alarmLoop=setInterval(()=>{if('speechSynthesis' in window){let u=new SpeechSynthesisUtterance('Mntanami battery igcwele khipha shaja manje');u.lang='zu-ZA';speechSynthesis.speak(u);}},2500);}else if(selectedRingtone==='beep'){alarmLoop=setInterval(()=>playBeep(1000,0.5,'square'),700);}else if(selectedRingtone==='siren'){let up=true,f=500;alarmLoop=setInterval(()=>{playBeep(f,0.2,'sawtooth');f=up?f+90:f-90;if(f>1000)up=false;if(f<400)up=true;},130);}else if(selectedRingtone==='custom'){let a=document.getElementById('audioPlayer');let b64=localStorage.getItem('mzansi_recorded_base64');a.src=b64||customAudioURL||'';a.loop=true;a.play();alarmLoop=setInterval(()=>{},1000);}}
+function stopShout(){document.getElementById('body').className='';document.getElementById('main').className='card';if(flashLoop)clearInterval(flashLoop);if(alarmLoop)clearInterval(alarmLoop);flashLoop=null;alarmLoop=null;if('speechSynthesis' in window)speechSynthesis.cancel();let a=document.getElementById('audioPlayer');a.pause();a.loop=false;if(audioCtx){try{audioCtx.close();}catch(e){}audioCtx=null;}document.getElementById('zuluStat').innerText='';upd();}
+function startAlert(){alertOn=true;setCustom(parseInt(document.getElementById('target').value));document.getElementById('startBtn').innerText='🟢 ON '+target+'% '+selectedRingtone.toUpperCase();}
 function stopAlert(){alertOn=false;stopShout();document.getElementById('startBtn').innerText='🟢 START ALERT';document.getElementById('stopBtn').classList.add('hidden')}
 function diagnosePhone(){let cEl=document.getElementById('diagCharger'),hEl=document.getElementById('diagAdvice');document.getElementById('diagResult').classList.remove('hidden');if(!battery){cEl.innerText='❌ No battery info';return}cEl.innerHTML=battery.charging?'✅ Charging '+Math.round(battery.level*100)+'%':'⚠️ NOT charging';hEl.innerText='💡 Close apps - 0789313670';}
 let saved=localStorage.getItem('mzansi_current_user');if(saved){window.currentUser=saved;checkExpiry();}
